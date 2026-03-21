@@ -37,44 +37,44 @@ const AboutPage: React.FC = () => {
 
   const daySchedule = [
     {
-      time: "7h00 - 9h00",
+      time: "En matinée",
       title: "Arrivée & Accueil",
-      description: "Accueil personnalisé de chaque chien avec rituel de bienvenue et acclimatation progressive à l'environnement.",
+      description: "Accueil personnalisé de chaque animal avec rituel de bienvenue et acclimatation progressive à l'environnement.",
       icon: FaPaw,
       color: "#f6c1c7"
     },
     {
-      time: "9h00 - 12h00",
+      time: "Matin",
       title: "Activités Matinales",
-      description: "Jeux stimulants, exercices physiques et activités cognitives selon la météo et les préférences de chaque chien.",
+      description: "Jeux stimulants, exercices physiques et activités cognitives selon la météo et les préférences de chaque animal.",
       icon: FaPlay,
       color: "#e8a5ad"
     },
     {
-      time: "12h00 - 14h00",
-      title: "Repos & Déjeuner",
-      description: "Pause déjeuner personnalisée selon les instructions des propriétaires, suivie d'une période de repos calme.",
+      time: "Mi-journée",
+      title: "Repos & Repas",
+      description: "Repas avec la nourriture apportée par les propriétaires, suivis d'une période de repos calme.",
       icon: FaUtensils,
       color: "#f6c1c7"
     },
     {
-      time: "14h00 - 16h00",
+      time: "Après-midi",
       title: "Promenades",
       description: "Sorties dans les espaces verts environnants pour l'exercice physique et la stimulation mentale.",
       icon: FaWalking,
       color: "#e8a5ad"
     },
     {
-      time: "16h00 - 17h30",
+      time: "Fin d'après-midi",
       title: "Jeux Libres",
-      description: "Session de socialisation et jeux libres sous surveillance attentive pour renforcer les liens entre chiens.",
+      description: "Session de socialisation et jeux libres sous surveillance attentive pour renforcer les liens entre animaux.",
       icon: FaHeart,
       color: "#f6c1c7"
     },
     {
-      time: "17h30 - 19h00",
+      time: "En soirée",
       title: "Retour au Calme",
-      description: "Préparation au départ avec toilettage léger et moment de détente avant le retour des propriétaires.",
+      description: "Moment de détente, photos et vidéos envoyées aux propriétaires avant le retour.",
       icon: FaBed,
       color: "#e8a5ad"
     }
@@ -83,26 +83,26 @@ const AboutPage: React.FC = () => {
   const pricingPlans = [
     {
       name: "Garde Journalière",
-      price: "20€",
+      price: "15€",
       period: "par jour",
       features: [
         "Accueil de 7h à 19h",
         "Activités et promenades incluses",
-        "Repas personnalisé",
-        "Photos quotidiennes",
+        "Nourriture apportée par le propriétaire",
+        "Photos et vidéos quotidiennes",
         "Rapport de comportement"
       ],
       popular: false,
       icon: FaDog
     },
     {
-      name: "Abonnement Hebdo",
-      price: "90€",
+      name: "Abonnement Régulier",
+      price: "65€",
       period: "5 jours",
       savings: "Économisez 10€",
       features: [
         "Tous les services inclus",
-        "Réduction de 10%",
+        "Réduction fidélité",
         "Planning flexible",
         "Suivi personnalisé",
         "Priorité de réservation"
@@ -113,37 +113,81 @@ const AboutPage: React.FC = () => {
     {
       name: "Demi-Journée",
       price: "12€",
-      period: "matin ou après-midi",
+      period: "jusqu'à 5h",
       features: [
-        "Accueil 4h maximum",
+        "Durée maximale : 5h",
         "Activités adaptées",
-        "Repas inclus si nécessaire",
+        "Nourriture apportée par le propriétaire",
         "Flexibilité horaire",
-        "Idéal pour débuter"
+        "Idéal pour découvrir"
       ],
       popular: false,
       icon: FaClock
+    },
+    {
+      name: "Soirée",
+      price: "Sur devis",
+      period: "garde du soir",
+      features: [
+        "Accueil en soirée",
+        "Activités calmes adaptées",
+        "Environnement sécurisé",
+        "Suivi personnalisé"
+      ],
+      popular: false,
+      icon: FaBed
+    },
+    {
+      name: "Adaptation",
+      price: "Incluse",
+      period: "avant garde définitive",
+      features: [
+        "Obligatoire avant toute garde",
+        "Découverte progressive",
+        "Évaluation du comportement",
+        "Rencontre avec les autres animaux"
+      ],
+      popular: false,
+      icon: FaLeaf
     }
   ];
 
   const additionalServices = [
     {
+      name: "Promenade",
+      price: "10€",
+      description: "Sortie encadrée et sécurisée dans les espaces verts environnants",
+      icon: FaWalking
+    },
+    {
+      name: "NAC",
+      price: "10€ / jour",
+      description: "Garde de nouveaux animaux de compagnie (lapins, rongeurs, oiseaux...)",
+      icon: FaLeaf
+    },
+    {
+      name: "Visite de chat",
+      price: "12€",
+      description: "Visite à domicile pour les chats : alimentation, jeux, câlins",
+      icon: FaPaw
+    },
+    {
+      name: "Garde Spéciale",
+      price: "Sur devis",
+      description: "Garde hors horaires habituels, visite à domicile ou garde spécifique de chat",
+      icon: FaUsers
+    },
+    {
       name: "Toilettage",
-      price: "25€ - 45€",
+      price: "Tarif bientôt disponible",
       description: "Bain, coupe, brossage et soins selon la race et les besoins",
       icon: FaShieldAlt
     },
     {
       name: "Éducation Comportementale",
-      price: "30€",
+      price: "Tarif bientôt disponible",
       description: "Séances individuelles pour corriger les comportements indésirables",
       icon: FaCertificate
-    },
-    {
-      name: "Garde Spéciale",
-      price: "Sur devis",
-      description: "Garde en dehors des horaires habituels ou services particuliers",
-      icon: FaUsers
     }
   ];
 
@@ -210,7 +254,7 @@ const AboutPage: React.FC = () => {
                 <FaHeart />
               </div>
               <h3>Soins Personnalisés</h3>
-              <p>Chaque chien reçoit une attention particulière adaptée à son caractère, son âge et ses besoins spécifiques.</p>
+              <p>Chaque animal reçoit une attention adaptée à ses besoins. Photos et vidéos quotidiennes envoyées aux propriétaires.</p>
             </motion.div>
 
             <motion.div className="approach-card" variants={fadeInUp}>
@@ -243,7 +287,7 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2>Une Journée Type</h2>
-            <p>Découvrez comment se déroule une journée dans notre garderie</p>
+            <p>Organisation indicative, adaptée aux besoins de chaque animal</p>
           </motion.div>
 
           <motion.div 
@@ -341,6 +385,51 @@ const AboutPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section Informations Importantes */}
+      <section className="approach-section" style={{ background: '#fdf0f2' }}>
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2>Informations Importantes</h2>
+            <p>À lire avant toute réservation</p>
+          </motion.div>
+          <motion.div
+            className="approach-grid"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            <motion.div className="approach-card" variants={fadeInUp}>
+              <div className="approach-icon">
+                <FaUtensils />
+              </div>
+              <h3>Nourriture non incluse</h3>
+              <p>Les croquettes et repas ne sont pas fournis. Le propriétaire doit apporter la nourriture habituelle de son animal.</p>
+            </motion.div>
+            <motion.div className="approach-card" variants={fadeInUp}>
+              <div className="approach-icon">
+                <FaShieldAlt />
+              </div>
+              <h3>Documents requis</h3>
+              <p>Carnet de vaccination à jour et passeport de l'animal obligatoires avant toute prise en charge.</p>
+            </motion.div>
+            <motion.div className="approach-card" variants={fadeInUp}>
+              <div className="approach-icon">
+                <FaHeart />
+              </div>
+              <h3>Adaptation obligatoire</h3>
+              <p>Une séance d'adaptation est requise avant toute garde définitive, pour assurer le confort et la sécurité de votre animal.</p>
+            </motion.div>
           </motion.div>
         </div>
       </section>

@@ -97,25 +97,25 @@ const ContactPage: React.FC = () => {
     {
       icon: FaPhone,
       title: "Téléphone",
-      content: "06 12 34 56 78",
-      link: "tel:0612345678"
+      content: "06 50 15 94 11",
+      link: "tel:0650159411"
     },
     {
       icon: FaEnvelope,
       title: "Email",
-      content: "EmilieCazes@gmail.com",
-      link: "mailto:EmilieCazes@gmail.com"
+      content: "lemondedeschiensetdesnacs@gmail.com",
+      link: "mailto:lemondedeschiensetdesnacs@gmail.com"
     },
     {
       icon: FaMapMarkerAlt,
       title: "Adresse",
-      content: "123 Rue des Chiens, 75000 Paris",
+      content: "26 Avenue Youri Gagarine, 94400 Vitry-sur-Seine",
       link: "#"
     },
     {
       icon: FaClock,
       title: "Horaires",
-      content: "Lun-Ven: 7h-19h, Sam: 8h-18h",
+      content: "Lun-Ven: 7h-19h | Sam-Dim: 9h-18h",
       link: "#"
     }
   ];

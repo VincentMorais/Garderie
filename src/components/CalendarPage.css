@@ -1,87 +1,71 @@
-/* Import des polices Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
 
-/* Variables CSS */
+/* ── Variables ───────────────────────────────────────────── */
 :root {
-  --primary-color: #f6c1c7;
+  --primary: #f6c1c7;
   --primary-dark: #e8a5ad;
   --primary-light: #fce4e7;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
+  --primary-bg: #fef2f2;
+  --text: #1f2937;
+  --text-muted: #6b7280;
   --text-light: #9ca3af;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-accent: #fef2f2;
-  --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --border-radius: 16px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Reset et base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --bg: #ffffff;
+  --bg-soft: #f9fafb;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --radius: 14px;
+  --transition: all 0.25s ease;
 }
 
 .calendar-page {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  color: var(--text-primary);
+  color: var(--text);
   overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Section Header */
+/* ── Section header ──────────────────────────────────────── */
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-bottom: 0.4rem;
 }
 
 .section-header p {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--text-muted);
 }
 
-/* Hero Section */
+/* ── Hero ────────────────────────────────────────────────── */
 .calendar-hero {
   position: relative;
-  height: 60vh;
-  min-height: 500px;
+  height: 55vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 80px; /* Espace pour la navbar fixe */
-  padding-top: 2rem; /* Espace supplémentaire */
+  margin-top: 80px;
 }
 
 .hero-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
 }
 
@@ -89,20 +73,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.7);
+  filter: brightness(0.62);
 }
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(246, 193, 199, 0.4),
-    rgba(232, 165, 173, 0.4)
-  );
+  inset: 0;
+  background: linear-gradient(135deg, rgba(246, 193, 199, 0.3), rgba(232, 165, 173, 0.3));
   z-index: 2;
 }
 
@@ -111,288 +88,264 @@
   z-index: 3;
   text-align: center;
   color: white;
-  max-width: 800px;
+  max-width: 680px;
   padding: 0 2rem;
 }
 
 .hero-title {
   font-family: 'Dancing Script', cursive;
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.75rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.15rem;
   margin-bottom: 2rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0.92;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 .hero-features {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 1.5rem;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  padding: 0.55rem 1.1rem;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .feature-icon {
-  font-size: 1.2rem;
-  color: var(--primary-color);
+  color: var(--primary);
+  font-size: 0.95rem;
 }
 
-/* Info Section */
-.info-section {
-  padding: 6rem 0;
-  background: var(--bg-secondary);
+/* ── Info strip ──────────────────────────────────────────── */
+.info-cards-section {
+  background: var(--bg-soft);
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--primary-light);
 }
 
-.info-grid {
+.info-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .info-card {
-  background: var(--bg-primary);
-  padding: 2.5rem 2rem;
-  border-radius: var(--border-radius);
+  background: var(--bg);
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-  border: 1px solid rgba(246, 193, 199, 0.1);
+  gap: 1rem;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .info-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-heavy);
-  border-color: var(--primary-color);
+  border-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
 }
 
-.info-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-  border-radius: 50%;
+.info-card-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: white;
+  flex-shrink: 0;
 }
 
-.info-card h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
-}
-
-.info-card p {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* Horaires */
-.schedule {
-  text-align: left;
-}
-
-.schedule-item {
+.info-card-body {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(246, 193, 199, 0.2);
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
-.schedule-item:last-child {
-  border-bottom: none;
+.info-card-body strong {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-light);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
 }
 
-.day {
-  font-weight: 500;
-  color: var(--text-primary);
+.info-card-body span,
+.info-card-body a {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.5;
 }
 
-.time {
-  font-weight: 600;
-  color: var(--primary-color);
+.info-card-body a:hover {
+  color: var(--primary-dark);
 }
 
-/* Contact Info */
-.contact-info {
-  margin-top: 1.5rem;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  justify-content: center;
-}
-
-.contact-icon {
-  color: var(--primary-color);
-  font-size: 1.1rem;
-}
-
-/* Services List */
-.services-list {
-  list-style: none;
-  text-align: left;
-}
-
-.services-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-secondary);
-}
-
-.check-icon {
-  color: var(--primary-color);
-  font-size: 1rem;
-}
-
-/* Booking Section */
+/* ── Booking section ─────────────────────────────────────── */
 .booking-section {
-  padding: 6rem 0;
-  background: var(--bg-primary);
+  padding: 5rem 0;
+  background: var(--bg-soft);
 }
+
+.booking-notices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.notice-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg);
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+.notice-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.notice-icon.check { color: #10b981; }
+.notice-icon.info  { color: var(--primary-dark); }
 
 .booking-container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
 }
 
-/* FAQ Section */
+/* ── FAQ ─────────────────────────────────────────────────── */
 .faq-section {
-  padding: 6rem 0;
-  background: var(--bg-accent);
+  padding: 5rem 0;
+  background: var(--primary-bg);
 }
 
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .faq-item {
-  background: var(--bg-primary);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-  border: 1px solid rgba(246, 193, 199, 0.1);
+  background: var(--bg);
+  border: 1.5px solid var(--primary-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
 }
 
-.faq-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-medium);
-  border-color: var(--primary-color);
+.faq-item.open {
+  border-color: var(--primary-dark);
 }
 
-.faq-item h3 {
-  font-size: 1.3rem;
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.97rem;
   font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+  color: var(--text);
+  font-family: inherit;
+  transition: background 0.2s;
 }
 
-.faq-item p {
-  color: var(--text-secondary);
-  line-height: 1.6;
+.faq-question:hover {
+  background: var(--primary-bg);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-  
-  .section-header h2 {
-    font-size: 2rem;
-  }
-  
-  .info-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-  
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
+.faq-chevron {
+  font-size: 0.82rem;
+  color: var(--primary-dark);
+  flex-shrink: 0;
+  transition: transform 0.28s ease;
 }
 
+.faq-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  overflow: hidden;
+}
+
+.faq-answer p {
+  padding: 1rem 1.5rem 1.25rem;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  border-top: 1px solid var(--primary-light);
+  margin: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .hero-features {
-    flex-direction: column;
+  .container { padding: 0 1rem; }
+
+  .hero-title    { font-size: 2.4rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-features { gap: 0.6rem; }
+  .feature-item  { font-size: 0.85rem; padding: 0.5rem 0.9rem; }
+
+  .info-cards-grid {
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
-  .feature-item {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .info-grid {
+
+  .booking-section,
+  .faq-section   { padding: 3.5rem 0; }
+
+  .section-header h2 { font-size: 1.65rem; }
+
+  .booking-notices {
     grid-template-columns: 1fr;
+    gap: 0.625rem;
   }
-  
-  .info-card {
-    padding: 2rem 1.5rem;
-  }
-  
-  .faq-item {
-    padding: 1.5rem;
-  }
+  .notice-item { font-size: 0.88rem; padding: 0.875rem 1rem; }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .section-header h2 {
-    font-size: 1.75rem;
-  }
-  
-  .info-card {
-    padding: 1.5rem 1rem;
-  }
-  
-  .info-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-  }
+  .calendar-hero { height: 50vh; min-height: 340px; }
+  .hero-title    { font-size: 2rem; }
 }
-  

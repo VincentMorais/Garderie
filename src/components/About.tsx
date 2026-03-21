@@ -2,22 +2,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  FaCalendarAlt, 
-  FaCertificate, 
-  FaHeart, 
-  FaPaw, 
+import {
+  FaCalendarAlt,
+  FaCertificate,
+  FaHeart,
+  FaPaw,
   FaStar,
   FaArrowRight,
   FaPhone,
   FaMapMarkerAlt,
   FaClock,
-  FaTimes
+  FaTimes,
+  FaEye,
+  FaDownload,
+  FaFilePdf,
+  FaLock
 } from 'react-icons/fa';
 import heroDogs from '../assets/accueilrose.jpg';
 import planningImg from '../assets/calendrier.jpg';
 import diplomaImg from '../assets/diplome.jpg';
 import InfiniteCarousel from '../components/InfinitieCarousel';
+import Testimonials from '../components/Testimonials';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './About.css';
 
@@ -181,9 +186,9 @@ const About: React.FC = () => {
                   </div>
                 </div>
                 <div className="info-content">
-                  <h3>DIPLÔME</h3>
-                  <p>Découvrez nos qualifications et notre expertise</p>
-                  <span className="info-cta">Voir le diplôme →</span>
+                  <h3>CERTIFICATIONS</h3>
+                  <p>Découvrez nos qualifications et documents officiels</p>
+                  <span className="info-cta">Voir les documents →</span>
                 </div>
               </button>
             </div>
@@ -226,22 +231,11 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Carrousel des clients satisfaits */}
-      <section className="testimonials-section">
-        <div className="container">
-          <motion.div 
-            className="section-header"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2>Nos Clients Satisfaits</h2>
-            <p>Découvrez les compagnons qui nous font confiance</p>
-          </motion.div>
-          <InfiniteCarousel />
-        </div>
-      </section>
+      {/* Section des témoignages clients */}
+      <Testimonials />
+
+      {/* Strip photos des compagnons */}
+      <InfiniteCarousel />
 
       {/* Modal du Diplôme */}
       {isDiplomaModalOpen && (
@@ -260,19 +254,84 @@ const About: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header">
-              <h3>Diplôme & Attestation</h3>
+              <h3>Documents & Certifications</h3>
               <button onClick={closeDiplomaModal} className="close-button">
                 <FaTimes />
               </button>
             </div>
-            <div className="modal-content">
-              <iframe
-                src="/Attestation.pdf"
-                title="Diplôme"
-                width="100%"
-                height="500px"
-                style={{ border: 'none' }}
-              />
+            <div className="docs-modal-content">
+
+              <div className="docs-list">
+                {[
+                  {
+                    title: 'Suivi de formation',
+                    src: '/Attestation.pdf',
+                    badge: 'temporary',
+                    badgeLabel: 'Temporaire',
+                    description: 'Formation en cours — ne constitue pas un diplôme final.'
+                  },
+                  {
+                    title: 'Contrat de garde',
+                    src: '/Contrat_Garde.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                  },
+                  {
+                    title: 'Règlement sanitaire',
+                    src: '/reglement%20sanitaire.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                  },
+                  {
+                    title: 'Attestation de non-abandon',
+                    src: '/Attestation%20de%20non%20abandon.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                  },
+                  {
+                    title: 'Attestation de bonne santé',
+                    src: '/Attestation%20de%20sant%C3%A9.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                  },
+                ].map((doc) => (
+                  <div key={doc.title} className="doc-row">
+                    <div className="doc-row-icon">
+                      <FaFilePdf />
+                    </div>
+                    <div className="doc-row-info">
+                      <div className="doc-row-top">
+                        <span className="doc-row-title">{doc.title}</span>
+                        <span className={`doc-badge doc-badge--${doc.badge}`}>{doc.badgeLabel}</span>
+                      </div>
+                      {doc.description && <p className="doc-row-desc">{doc.description}</p>}
+                    </div>
+                    <div className="doc-row-actions">
+                      <a href={doc.src} target="_blank" rel="noopener noreferrer" className="doc-btn doc-btn--view">
+                        <FaEye /> <span>Voir</span>
+                      </a>
+                      <a href={doc.src} download className="doc-btn doc-btn--download">
+                        <FaDownload /> <span>Télécharger</span>
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="docs-coming-soon">
+                <h4>Documents à venir</h4>
+                <div className="docs-coming-grid">
+                  {[
+                    'Certification de pet sitting',
+                    'Attestation de certification ASV',
+                  ].map((doc) => (
+                    <div key={doc} className="docs-coming-item">
+                      <FaLock /> {doc}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </motion.div>
         </motion.div>

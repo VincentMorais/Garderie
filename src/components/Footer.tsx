@@ -1,13 +1,5 @@
 import React from 'react';
-import { 
-  FaFacebook, 
-  FaInstagram, 
-  FaTwitter, 
-  FaPhone, 
-  FaEnvelope, 
-  FaMapMarkerAlt, 
-  FaPaw
-} from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaw, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -16,46 +8,65 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-brand">
-          <FaPaw className="footer-logo" />
-          <div>
-            <h3>Le Monde Des Chiens Et Des Nacs</h3>
-            <p>Garderie & Pension</p>
+      <div className="footer-inner">
+
+        {/* Brand */}
+        <div className="footer-col footer-brand">
+          <div className="footer-logo">
+            <FaPaw />
+          </div>
+          <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
+          <p>Garderie & Pension à Vitry-sur-Seine</p>
+          <div className="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebook />
+            </a>
           </div>
         </div>
 
-        <div className="footer-info">
-          <div className="contact-info">
-            <span><FaPhone /> 06 50 15 94 11</span>
-            <span><FaEnvelope /> EmilieCazes@gmail.com</span>
-            <span><FaMapMarkerAlt /> 26 AVENUE YOURI GAGARINE, 94400 Vitry Sur Seine</span>
-          </div>
-          
-          <div className="footer-links">
+        {/* Navigation */}
+        <div className="footer-col">
+          <h4>Navigation</h4>
+          <nav className="footer-nav">
             <Link to="/">Accueil</Link>
-            <Link to="/about">À Propos</Link>
-            <Link to="/planning">Planning</Link>
+            <Link to="/about">À propos</Link>
+            <Link to="/calendar">Réservation</Link>
             <Link to="/contact">Contact</Link>
-          </div>
+          </nav>
         </div>
 
-        <div className="footer-social">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FaFacebook />
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
-          </a>
+        {/* Contact */}
+        <div className="footer-col">
+          <h4>Nous trouver</h4>
+          <ul className="footer-contact">
+            <li>
+              <FaMapMarkerAlt className="fc-icon" />
+              <span>26 Avenue Youri Gagarine<br />94400 Vitry-sur-Seine</span>
+            </li>
+            <li>
+              <FaPhone className="fc-icon" />
+              <a href="tel:0650159411">06 50 15 94 11</a>
+            </li>
+            <li>
+              <FaEnvelope className="fc-icon" />
+              <a href="mailto:lemondedeschiensetdesnacs@gmail.com">lemondedeschiensetdesnacs@gmail.com</a>
+            </li>
+            <li>
+              <FaClock className="fc-icon" />
+              <span>Lun–Ven 7h–19h<br />Sam–Dim 9h–18h</span>
+            </li>
+          </ul>
         </div>
+
       </div>
 
+      {/* Bottom bar */}
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Le Monde Des Chiens Et Des Nacs - Emilie Cazes</p>
-        <div>
+        <p>&copy; {currentYear} Le Monde Des Chiens Et Des Nacs — Émilie Cazes</p>
+        <div className="footer-bottom-links">
           <Link to="/about">Mentions légales</Link>
           <Link to="/contact">Confidentialité</Link>
         </div>

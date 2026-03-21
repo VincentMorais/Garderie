@@ -1,0 +1,268 @@
+/* Section */
+.testimonials-section {
+  background: linear-gradient(135deg, #fef7f7, #fdf2f8);
+  padding: 4rem 0;
+  position: relative;
+}
+
+.testimonials-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f6c1c7, transparent);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Résumé compact */
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(246, 193, 199, 0.3);
+  margin-bottom: 2rem;
+}
+
+.reviews-score-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reviews-score-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.reviews-score-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.reviews-stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 1rem;
+}
+
+.reviews-count {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.reviews-google-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #4285f4;
+  color: white;
+  padding: 0.6rem 1.1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Grille */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Carte */
+.testimonial-card {
+  background: white;
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(246, 193, 199, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f6c1c7, #e8a5ad);
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+}
+
+.client-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.3rem 0;
+}
+
+.rating {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.testimonial-date {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.testimonial-content {
+  position: relative;
+}
+
+.quote-icon {
+  position: absolute;
+  top: -0.25rem;
+  left: -0.25rem;
+  color: #f6c1c7;
+  font-size: 1.2rem;
+  opacity: 0.35;
+}
+
+.testimonial-content p {
+  color: #4b5563;
+  line-height: 1.55;
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.88rem;
+}
+
+/* Boutons d'action */
+.reviews-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  color: #e8a5ad;
+  border: 1.5px solid #e8a5ad;
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-expand:hover {
+  background: #fce4e7;
+  border-color: #c0576a;
+  color: #c0576a;
+}
+
+.btn-google-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #4285f4;
+  color: white;
+  text-decoration: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+
+.btn-google-cta:hover {
+  background: #2b6fdb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.35);
+}
+
+.btn-google-cta svg:last-child {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 2.5rem 0;
+  }
+
+  .reviews-summary {
+    padding: 1rem 1.25rem;
+  }
+
+  .reviews-score-number {
+    font-size: 2.4rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .reviews-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-expand,
+  .btn-google-cta {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-summary {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .reviews-google-logo {
+    align-self: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card:hover {
+    transform: none;
+  }
+}
