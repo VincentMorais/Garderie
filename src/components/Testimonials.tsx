@@ -388,14 +388,11 @@ const Testimonials: React.FC = () => {
               <><FaChevronDown /> Voir les {testimonials.length - INITIAL_COUNT} autres avis</>
             )}
           </button>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="btn-google-cta"
           >
             <FaGoogle /> Tous les avis Google <FaExternalLinkAlt />
-          </a>
+          </button>
         </div>
 
       </div>

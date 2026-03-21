@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactCalendar from 'react-calendar';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   FaCalendarAlt, FaDog, FaUser, FaPhone, FaEnvelope,
   FaCheckCircle, FaPaw, FaArrowRight, FaArrowLeft, FaInfoCircle
