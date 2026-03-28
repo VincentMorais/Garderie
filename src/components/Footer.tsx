@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
           <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
           <p>Garderie & Pension à Arpajon</p>
           <div className="footer-social">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/lemondedeschiensetdesnacs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram />
             </a>
             <a href="https://www.facebook.com/profile.php?id=61583428500404" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
