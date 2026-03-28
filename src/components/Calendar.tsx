@@ -201,7 +201,7 @@ const BookingCalendar: React.FC = () => {
       {STEPS.map((label, i) => (
         <React.Fragment key={i}>
           <div className={`step-dot ${i < current ? 'done' : i === current ? 'active' : ''}`}>
-            {i < current ? '✓' : i + 1}
+            <span className="step-circle">{i < current ? '✓' : i + 1}</span>
             <span className="step-label">{label}</span>
           </div>
           {i < STEPS.length - 1 && <div className={`step-line ${i < current ? 'done' : ''}`} />}
