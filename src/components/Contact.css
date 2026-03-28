@@ -207,6 +207,8 @@
   font-weight: 500;
   transition: var(--transition);
   display: block;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .contact-info-link:hover {

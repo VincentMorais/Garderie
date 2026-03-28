@@ -1,4 +1,3 @@
-// src/components/Testimonials.tsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaGoogle, FaChevronDown, FaChevronUp, FaExternalLinkAlt } from 'react-icons/fa';
@@ -319,7 +318,6 @@ const Testimonials: React.FC = () => {
     <section className="testimonials-section">
       <div className="container">
 
-        {/* Résumé compact */}
         <motion.div
           className="reviews-summary"
           initial={{ opacity: 0, y: 30 }}
@@ -342,7 +340,6 @@ const Testimonials: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Grille */}
         <div className="testimonials-grid">
           <AnimatePresence initial={false}>
             {visible.map((testimonial, index) => (
@@ -376,7 +373,6 @@ const Testimonials: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* Actions */}
         <div className="reviews-actions">
           <button
             className="btn-expand"
@@ -388,11 +384,14 @@ const Testimonials: React.FC = () => {
               <><FaChevronDown /> Voir les {testimonials.length - INITIAL_COUNT} autres avis</>
             )}
           </button>
-          <button
+          <a
+            href="https://www.google.com/search?sca_esv=f9768091ef2272cb&sxsrf=ANbL-n4aKcfYKArDxwdC-nhhf5wJi6XGRw:1774641095706&q=Le+monde+des+chiens+et+des+nacs+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIysjQ0MLO0MATSRqZGlmaWRhsYGV8xqvikKuTm56WkKqSkFiskZ2Sm5hUrpJaAeXmJycUKjmWZxYtYiVIGAALEa3lnAAAA&rldimm=291069812912529692&tbm=lcl&hl=fr-FR&sa=X&ved=2ahUKEwiv5_Og7cCTAxUScKQEHeO8MKUQ9fQKegQIWhAG&biw=2560&bih=1271&dpr=1#lkt=LocalPoiReviews"
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-google-cta"
           >
             <FaGoogle /> Tous les avis Google <FaExternalLinkAlt />
-          </button>
+          </a>
         </div>
 
       </div>

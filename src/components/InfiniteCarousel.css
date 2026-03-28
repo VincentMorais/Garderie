@@ -43,6 +43,7 @@
 .strip-row {
   overflow: hidden;
   margin-bottom: 0.75rem;
+  contain: paint;
 }
 
 /* ─── Track ───────────────────────────────────────────── */
@@ -51,11 +52,13 @@
   gap: 0.75rem;
   width: max-content;
   padding: 0.5rem 0;
-  animation: strip-left 55s linear infinite;
+  animation: strip-left 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .strip-track--reverse {
-  animation: strip-right 65s linear infinite;
+  animation: strip-right 48s linear infinite;
 }
 
 .strip-track:hover,
@@ -81,6 +84,7 @@
   object-fit: cover;
   transition: transform 0.4s ease;
   display: block;
+  will-change: transform;
 }
 
 .strip-item:hover img {
@@ -112,13 +116,13 @@
 
 /* ─── Animations ──────────────────────────────────────── */
 @keyframes strip-left {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes strip-right {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
 }
 
 /* ─── Responsive ──────────────────────────────────────── */
@@ -132,13 +136,18 @@
   }
 
   .strip-item {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 10px;
   }
 
   .strip-track {
     gap: 0.5rem;
+  }
+
+  /* Une seule rangée sur mobile */
+  .strip-row:last-of-type {
+    display: none;
   }
 }
 
@@ -152,8 +161,8 @@
   }
 
   .strip-item {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 8px;
   }
 }

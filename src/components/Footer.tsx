@@ -10,13 +10,12 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer-inner">
 
-        {/* Brand */}
         <div className="footer-col footer-brand">
           <div className="footer-logo">
             <FaPaw />
           </div>
           <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
-          <p>Garderie & Pension à Vitry-sur-Seine</p>
+          <p>Garderie & Pension à Arpajon</p>
           <div className="footer-social">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram />
@@ -27,7 +26,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation */}
         <div className="footer-col">
           <h4>Navigation</h4>
           <nav className="footer-nav">
@@ -38,13 +36,12 @@ const Footer: React.FC = () => {
           </nav>
         </div>
 
-        {/* Contact */}
         <div className="footer-col">
           <h4>Nous trouver</h4>
           <ul className="footer-contact">
             <li>
               <FaMapMarkerAlt className="fc-icon" />
-              <span>26 Avenue Youri Gagarine<br />94400 Vitry-sur-Seine</span>
+              <span>5 Impasse du Tacot<br />91290 Arpajon</span>
             </li>
             <li>
               <FaPhone className="fc-icon" />
@@ -52,7 +49,7 @@ const Footer: React.FC = () => {
             </li>
             <li>
               <FaEnvelope className="fc-icon" />
-              <a href="mailto:lemondedeschiensetdesnacs@gmail.com">lemondedeschiensetdesnacs@gmail.com</a>
+              <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a>
             </li>
             <li>
               <FaClock className="fc-icon" />
@@ -63,7 +60,6 @@ const Footer: React.FC = () => {
 
       </div>
 
-      {/* Bottom bar */}
       <div className="footer-bottom">
         <p>&copy; {currentYear} Le Monde Des Chiens Et Des Nacs — Émilie Cazes</p>
         <div className="footer-bottom-links">

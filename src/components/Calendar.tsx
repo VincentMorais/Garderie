@@ -169,19 +169,24 @@ const BookingCalendar: React.FC = () => {
 
     try {
       const serviceLabel = SERVICE_OPTIONS.find(s => s.value === form.serviceType)?.label || form.serviceType;
-      await emailjs.send('service_pxe0mxi', 'template_eq0ut96', {
-        ownerName: `${form.firstName} ${form.lastName}`,
-        ownerEmail: form.email,
-        ownerPhone: form.phone,
-        dogName: form.dogName,
-        dogBreed: form.dogBreed,
-        dogCount: String(form.dogCount),
-        serviceType: serviceLabel,
-        startDate: formatDate(start),
-        endDate: toKey(start) === toKey(end) ? formatDate(start) : formatDate(end),
-        message: form.message || 'Aucun',
-        specialNeeds: form.specialNeeds || 'Aucun',
-      }, 'e4M_zkmVPcOxkYUxj');
+      await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        {
+          ownerName: `${form.firstName} ${form.lastName}`,
+          ownerEmail: form.email,
+          ownerPhone: form.phone,
+          dogName: form.dogName,
+          dogBreed: form.dogBreed,
+          dogCount: String(form.dogCount),
+          serviceType: serviceLabel,
+          startDate: formatDate(start),
+          endDate: toKey(start) === toKey(end) ? formatDate(start) : formatDate(end),
+          message: form.message || 'Aucun',
+          specialNeeds: form.specialNeeds || 'Aucun',
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
+      );
     } catch { /* email failure non critique */ }
 
     await loadOccupancy();
@@ -191,7 +196,6 @@ const BookingCalendar: React.FC = () => {
 
   const reset = () => { setSelectedRange(null); setStep(0); setForm(EMPTY_FORM); setError(null); };
 
-  // ─── Stepper indicator ─────────────────────────────────────
   const StepIndicator = ({ current }: { current: number }) => (
     <div className="step-indicator">
       {STEPS.map((label, i) => (
@@ -206,7 +210,6 @@ const BookingCalendar: React.FC = () => {
     </div>
   );
 
-  // ─── Calendar view ──────────────────────────────────────────
   if (step === 0) {
     return (
       <div className="booking-calendar">
@@ -251,7 +254,6 @@ const BookingCalendar: React.FC = () => {
     );
   }
 
-  // ─── Step 1: Service ────────────────────────────────────────
   if (step === 1) {
     return (
       <motion.div className="booking-form-wrapper"
@@ -313,7 +315,6 @@ const BookingCalendar: React.FC = () => {
     );
   }
 
-  // ─── Step 2: Animal ─────────────────────────────────────────
   if (step === 2) {
     return (
       <motion.div className="booking-form-wrapper"
@@ -355,7 +356,6 @@ const BookingCalendar: React.FC = () => {
     );
   }
 
-  // ─── Step 3: Owner ──────────────────────────────────────────
   if (step === 3) {
     return (
       <motion.form className="booking-form-wrapper" onSubmit={handleSubmit}
@@ -412,7 +412,6 @@ const BookingCalendar: React.FC = () => {
     );
   }
 
-  // ─── Success ────────────────────────────────────────────────
   return (
     <motion.div className="booking-success"
       initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>

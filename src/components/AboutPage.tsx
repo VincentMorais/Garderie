@@ -1,5 +1,5 @@
-// src/pages/AboutPage.tsx
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   FaClock, 
@@ -21,6 +21,7 @@ import dogImage from '../assets/chienmangerrose.jpg';
 import './AboutPage.css';
 
 const AboutPage: React.FC = () => {
+  const navigate = useNavigate();
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -193,7 +194,6 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="about-page">
-      {/* Hero Section */}
       <section className="about-hero">
         <div className="hero-background">
           <img src={dogImage} alt="Chien qui joue" className="hero-image" />
@@ -228,7 +228,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Notre Approche */}
       <section className="approach-section">
         <div className="container">
           <motion.div 
@@ -262,7 +261,7 @@ const AboutPage: React.FC = () => {
                 <FaShieldAlt />
               </div>
               <h3>Environnement Sécurisé</h3>
-              <p>Notre garderie est entièrement sécurisée avec des espaces adaptés et une surveillance constante.</p>
+              <p>La garderie est entièrement sécurisée avec des espaces adaptés et une surveillance constante.</p>
             </motion.div>
 
             <motion.div className="approach-card" variants={fadeInUp}>
@@ -270,13 +269,12 @@ const AboutPage: React.FC = () => {
                 <FaCertificate />
               </div>
               <h3>Équipe Qualifiée</h3>
-              <p>Nos soigneurs sont formés et certifiés pour assurer le bien-être et la sécurité de vos compagnons.</p>
+              <p>Émilie est formée et certifiée pour assurer le bien-être et la sécurité de vos compagnons.</p>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Section Journée Type */}
       <section className="schedule-section">
         <div className="container">
           <motion.div 
@@ -325,7 +323,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Tarifs */}
       <section className="pricing-section">
         <div className="container">
           <motion.div 
@@ -379,9 +376,9 @@ const AboutPage: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  <button className="pricing-button">
+                  <Link to="/contact" className="pricing-button">
                     Réserver maintenant
-                  </button>
+                  </Link>
                 </motion.div>
               );
             })}
@@ -389,7 +386,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Informations Importantes */}
       <section className="approach-section" style={{ background: '#fdf0f2' }}>
         <div className="container">
           <motion.div
@@ -434,7 +430,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Services Supplémentaires */}
       <section className="additional-services-section">
         <div className="container">
           <motion.div 
@@ -477,7 +472,6 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Contact */}
       <section className="contact-section">
         <div className="container">
           <motion.div 
@@ -488,12 +482,12 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h2>Des Questions ?</h2>
-            <p>Notre équipe est là pour vous accompagner et répondre à toutes vos questions</p>
+            <p>Émilie est là pour vous accompagner et répondre à toutes vos questions</p>
             <div className="contact-actions">
-              <button className="primary-button">
+              <button className="primary-button" onClick={() => navigate('/contact')}>
                 Nous contacter
               </button>
-              <button className="secondary-button">
+              <button className="secondary-button" onClick={() => navigate('/calendar')}>
                 Voir le planning
               </button>
             </div>

@@ -41,7 +41,6 @@ const CalendarPage: React.FC = () => {
   return (
     <div className="calendar-page">
 
-      {/* ── Hero ─────────────────────────────────────────── */}
       <section className="calendar-hero">
         <div className="hero-background">
           <img src={dogImage} alt="Chien" className="hero-image" />
@@ -74,7 +73,6 @@ const CalendarPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Info cards ───────────────────────────────────── */}
       <section className="info-cards-section">
         <div className="container">
           <motion.div
@@ -101,8 +99,8 @@ const CalendarPage: React.FC = () => {
               </div>
               <div className="info-card-body">
                 <strong>Adresse</strong>
-                <span>26 Av. Youri Gagarine</span>
-                <span>94400 Vitry-sur-Seine</span>
+                <span>5 Impasse du Tacot</span>
+                <span>91290 Arpajon</span>
               </div>
             </div>
 
@@ -113,14 +111,13 @@ const CalendarPage: React.FC = () => {
               <div className="info-card-body">
                 <strong>Contact</strong>
                 <a href="tel:0650159411">06 50 15 94 11</a>
-                <a href="mailto:lemondedeschiensetdesnacs@gmail.com">lemondedeschiensetdesnacs@gmail.com</a>
+                <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── Réservation ──────────────────────────────────── */}
       <section className="booking-section">
         <div className="container">
           <motion.div
@@ -165,7 +162,6 @@ const CalendarPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── FAQ accordion ────────────────────────────────── */}
       <section className="faq-section">
         <div className="container">
           <motion.div

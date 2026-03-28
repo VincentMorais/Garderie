@@ -59,5 +59,17 @@ CREATE POLICY "Public read" ON reservations
 CREATE POLICY "Public insert" ON reservations
   FOR INSERT WITH CHECK (true);
 
+-- Les utilisateurs connectés (admin) peuvent modifier le statut
+CREATE POLICY "Admin update" ON reservations
+  FOR UPDATE USING (auth.role() = 'authenticated');
+
+-- Les utilisateurs connectés (admin) peuvent tout lire (y compris données sensibles)
+CREATE POLICY "Admin full read" ON reservations
+  FOR SELECT USING (auth.role() = 'authenticated');
+
+──────────────────────────────────────────────────────────────
+CRÉER LE COMPTE ADMIN DANS SUPABASE :
+→ Supabase Dashboard > Authentication > Users > Add user
+→ Renseigne l'email et le mot de passe d'Émilie
 ──────────────────────────────────────────────────────────────
 */

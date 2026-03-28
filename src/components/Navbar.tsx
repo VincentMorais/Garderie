@@ -18,21 +18,15 @@ const Navbar: React.FC = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
 
-  // Gestion du scroll pour l'effet de transparence et hide/show
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
-      // Effet de transparence
-      const isScrolled = currentScrollY > 20;
-      setScrolled(isScrolled);
-      
-      // Effet hide/show sur scroll
+
+      setScrolled(currentScrollY > 20);
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scroll vers le bas et plus de 100px
         setIsVisible(false);
       } else if (currentScrollY < lastScrollY) {
-        // Scroll vers le haut
         setIsVisible(true);
       }
       
@@ -47,7 +41,6 @@ const Navbar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  // Fermer le menu mobile lors du changement de route
   useEffect(() => {
     setIsOpen(false);
   }, [location]);
@@ -76,8 +69,7 @@ const Navbar: React.FC = () => {
       }}
     >
       <nav className="navbar">
-        {/* Logo/Brand */}
-        <motion.div 
+        <motion.div
           className="navbar-brand"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -85,7 +77,6 @@ const Navbar: React.FC = () => {
           <h1>Le Monde Des Chiens Et Des Nacs</h1>
         </motion.div>
 
-        {/* Menu hamburger */}
         <motion.div
           className="hamburger"
           onClick={toggleMenu}
@@ -117,8 +108,7 @@ const Navbar: React.FC = () => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Navigation links */}
-        <motion.ul 
+        <motion.ul
           className={`navbar-links ${isOpen ? 'active' : ''}`}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,7 +146,6 @@ const Navbar: React.FC = () => {
           })}
         </motion.ul>
 
-        {/* Overlay mobile */}
         <AnimatePresence>
           {isOpen && (
             <motion.div

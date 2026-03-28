@@ -1,10 +1,8 @@
-// src/components/InfiniteCarousel.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHeart, FaPaw } from 'react-icons/fa';
 import './InfiniteCarousel.css';
 
-// Import des images
 import img1 from '../assets/chien.png';
 import img2 from '../assets/chien2.png';
 import img3 from '../assets/chat.png';
@@ -27,7 +25,6 @@ import img19 from '../assets/cheki.jpeg';
 import img20 from '../assets/cheyenne.jpeg';
 import img21 from '../assets/coco.jpg';
 
-// Import des photos de chiens du dossier chien
 import chien1 from '../assets/chien/Screenshot_20250828_031426_com.google.android.googlequicksearchbox_edit_24629724649887.jpg';
 import chien2 from '../assets/chien/Screenshot_20250828_031204_com.google.android.googlequicksearchbox_edit_24671110338422.jpg';
 import chien3 from '../assets/chien/Screenshot_20250828_031128_com.google.android.googlequicksearchbox_edit_24655220504570.jpg';
@@ -65,9 +62,9 @@ import chien34 from '../assets/chien/2023-12-16 11.44.16.jpg';
 import chien35 from '../assets/chien/2023-12-16 07.41.27.jpg';
 
 const images = [
-  { src: img1, name: "Chien 1", rating: 5 },
-  { src: img2, name: "Chien 2", rating: 5 },
-  { src: img3, name: "Chat", rating: 5 },
+  { src: img1, name: "Max", rating: 5 },
+  { src: img2, name: "Luna", rating: 5 },
+  { src: img3, name: "Mimi", rating: 5 },
   { src: img4, name: "Ambre", rating: 5 },
   { src: img5, name: "Baco", rating: 5 },
   { src: img6, name: "Berlingo", rating: 5 },
@@ -86,47 +83,45 @@ const images = [
   { src: img19, name: "Cheki", rating: 5 },
   { src: img20, name: "Cheyenne", rating: 5 },
   { src: img21, name: "Coco", rating: 5 },
-  // Ajout des photos de chiens du dossier chien
-  { src: chien1, name: "Chien Adorable 1", rating: 5 },
-  { src: chien2, name: "Chien Adorable 2", rating: 5 },
-  { src: chien3, name: "Chien Adorable 3", rating: 5 },
-  { src: chien4, name: "Chien Adorable 4", rating: 5 },
-  { src: chien5, name: "Chien Adorable 5", rating: 5 },
-  { src: chien6, name: "Chien Adorable 6", rating: 5 },
+  { src: chien1, name: "Rocky", rating: 5 },
+  { src: chien2, name: "Bella", rating: 5 },
+  { src: chien3, name: "Charlie", rating: 5 },
+  { src: chien4, name: "Nala", rating: 5 },
+  { src: chien5, name: "Rex", rating: 5 },
+  { src: chien6, name: "Daisy", rating: 5 },
   { src: chien7, name: "Soka", rating: 5 },
-  { src: chien8, name: "Chien Adorable 8", rating: 5 },
-  { src: chien9, name: "Chien Adorable 9", rating: 5 },
-  { src: chien10, name: "Chien Adorable 10", rating: 5 },
-  { src: chien11, name: "Chien Adorable 11", rating: 5 },
-  { src: chien12, name: "Chien Adorable 12", rating: 5 },
-  { src: chien13, name: "Chien Adorable 13", rating: 5 },
-  { src: chien14, name: "Chien Adorable 14", rating: 5 },
-  { src: chien15, name: "Chien Adorable 15", rating: 5 },
-  { src: chien16, name: "Chien Adorable 16", rating: 5 },
-  { src: chien17, name: "Chien Adorable 17", rating: 5 },
-  { src: chien18, name: "Chien Adorable 18", rating: 5 },
-  { src: chien19, name: "Chien Adorable 19", rating: 5 },
-  { src: chien20, name: "Chien Adorable 20", rating: 5 },
-  { src: chien21, name: "Chien Adorable 21", rating: 5 },
-  { src: chien22, name: "Chien Adorable 22", rating: 5 },
-  { src: chien23, name: "Chien Adorable 23", rating: 5 },
-  { src: chien24, name: "Chien Adorable 24", rating: 5 },
-  { src: chien25, name: "Chien Adorable 25", rating: 5 },
-  { src: chien26, name: "Chien Adorable 26", rating: 5 },
-  { src: chien27, name: "Chien Adorable 27", rating: 5 },
-  { src: chien28, name: "Chien Adorable 28", rating: 5 },
-  { src: chien29, name: "Chien Adorable 29", rating: 5 },
-  { src: chien30, name: "Chien Adorable 30", rating: 5 },
-  { src: chien31, name: "Chien Adorable 31", rating: 5 },
-  { src: chien32, name: "Chien Adorable 32", rating: 5 },
-  { src: chien33, name: "Chien Adorable 33", rating: 5 },
-  { src: chien34, name: "Chien Adorable 34", rating: 5 },
-  { src: chien35, name: "Chien Adorable 35", rating: 5 }
+  { src: chien8, name: "Oscar", rating: 5 },
+  { src: chien9, name: "Stella", rating: 5 },
+  { src: chien10, name: "Bruno", rating: 5 },
+  { src: chien11, name: "Zara", rating: 5 },
+  { src: chien12, name: "Toby", rating: 5 },
+  { src: chien13, name: "Maya", rating: 5 },
+  { src: chien14, name: "Simba", rating: 5 },
+  { src: chien15, name: "Nora", rating: 5 },
+  { src: chien16, name: "Titan", rating: 5 },
+  { src: chien17, name: "Léna", rating: 5 },
+  { src: chien18, name: "Filou", rating: 5 },
+  { src: chien19, name: "Iris", rating: 5 },
+  { src: chien20, name: "Gus", rating: 5 },
+  { src: chien21, name: "Perle", rating: 5 },
+  { src: chien22, name: "Goliath", rating: 5 },
+  { src: chien23, name: "Nina", rating: 5 },
+  { src: chien24, name: "Sultan", rating: 5 },
+  { src: chien25, name: "Cléo", rating: 5 },
+  { src: chien26, name: "Balou", rating: 5 },
+  { src: chien27, name: "Jade", rating: 5 },
+  { src: chien28, name: "Dino", rating: 5 },
+  { src: chien29, name: "Fiona", rating: 5 },
+  { src: chien30, name: "Pablo", rating: 5 },
+  { src: chien31, name: "Vénus", rating: 5 },
+  { src: chien32, name: "Ugo", rating: 5 },
+  { src: chien33, name: "Moka", rating: 5 },
+  { src: chien34, name: "Zéphyr", rating: 5 },
+  { src: chien35, name: "Lara", rating: 5 }
 ];
 
-const half = Math.ceil(images.length / 2);
-const row1 = images.slice(0, half);
-const row2 = images.slice(half);
+const row1 = images.slice(0, 28);
+const row2 = images.slice(28);
 
 const InfiniteCarousel: React.FC = () => {
   return (
@@ -147,7 +142,6 @@ const InfiniteCarousel: React.FC = () => {
         <p>Découvrez les compagnons qui nous font confiance chaque jour</p>
       </motion.div>
 
-      {/* Rangée 1 — défile vers la gauche */}
       <div className="strip-row">
         <div className="strip-track">
           {[...row1, ...row1].map((img, i) => (
@@ -161,7 +155,6 @@ const InfiniteCarousel: React.FC = () => {
         </div>
       </div>
 
-      {/* Rangée 2 — défile vers la droite */}
       <div className="strip-row">
         <div className="strip-track strip-track--reverse">
           {[...row2, ...row2].map((img, i) => (

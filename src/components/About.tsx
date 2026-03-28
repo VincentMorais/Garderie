@@ -1,4 +1,3 @@
-// About.tsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -53,7 +52,6 @@ const About: React.FC = () => {
 
   return (
     <div className="home">
-      {/* Hero Section Moderne */}
       <section className="hero-section">
         <div className="hero-background">
           <img src={heroDogs} alt="Deux chiots" className="hero-image" />
@@ -86,7 +84,7 @@ const About: React.FC = () => {
                 <span>Qualité Premium</span>
               </div>
             </div>
-            <Link to="/contact" className="cta-button">
+            <Link to="/calendar" className="cta-button">
               Réserver maintenant
               <FaArrowRight className="cta-arrow" />
             </Link>
@@ -94,7 +92,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Services */}
       <section className="services-section">
         <div className="container">
           <motion.div 
@@ -131,7 +128,7 @@ const About: React.FC = () => {
                 <FaCertificate />
               </div>
               <h3>Certification Qualité</h3>
-              <p>Nos équipes sont formées et certifiées pour le bien-être animal</p>
+              <p>Émilie est formée et certifiée pour le bien-être animal</p>
               <Link to="/about" className="service-link">
                 En savoir plus <FaArrowRight />
               </Link>
@@ -151,7 +148,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Planning & Diplôme */}
       <section className="info-section">
         <div className="container">
           <motion.div 
@@ -196,7 +192,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Section Contact Rapide */}
       <section className="contact-section">
         <div className="container">
           <motion.div 
@@ -208,7 +203,7 @@ const About: React.FC = () => {
           >
             <div className="contact-info">
               <h2>Besoin d'aide ?</h2>
-              <p>Notre équipe est là pour vous accompagner</p>
+              <p>Émilie est là pour vous accompagner</p>
               <div className="contact-details">
                 <div className="contact-item">
                   <FaPhone className="contact-icon" />
@@ -231,13 +226,10 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Section des témoignages clients */}
       <Testimonials />
 
-      {/* Strip photos des compagnons */}
       <InfiniteCarousel />
 
-      {/* Modal du Diplôme */}
       {isDiplomaModalOpen && (
         <motion.div 
           className="diploma-modal-overlay"

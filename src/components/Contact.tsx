@@ -1,4 +1,3 @@
-// src/pages/ContactPage.tsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
@@ -52,15 +51,13 @@ const ContactPage: React.FC = () => {
 
     try {
       await emailjs.send(
-        'service_pxe0mxi',        // Même Service ID que le calendrier
-        'template_eq0ut96',       // Même Template ID que le calendrier
-        templateParams, 
-        'e4M_zkmVPcOxkYUxj'      // Même Public Key que le calendrier
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        templateParams,
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
       );
       
       setSubmitStatus('success');
-      
-      // Reset du formulaire après succès
       setTimeout(() => {
         setSubmitStatus('idle');
         setFormData({
@@ -103,13 +100,13 @@ const ContactPage: React.FC = () => {
     {
       icon: FaEnvelope,
       title: "Email",
-      content: "lemondedeschiensetdesnacs@gmail.com",
-      link: "mailto:lemondedeschiensetdesnacs@gmail.com"
+      content: "contact@lemondedeschiensetdesnacs.com",
+      link: "mailto:contact@lemondedeschiensetdesnacs.com"
     },
     {
       icon: FaMapMarkerAlt,
       title: "Adresse",
-      content: "26 Avenue Youri Gagarine, 94400 Vitry-sur-Seine",
+      content: "5 Impasse du Tacot, 91290 Arpajon",
       link: "#"
     },
     {
@@ -130,7 +127,6 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="contact-page">
-      {/* Hero Section */}
       <section className="contact-hero">
         <div className="hero-background">
           <img src={contactImage} alt="Chien de contact" className="hero-image" />
@@ -145,7 +141,7 @@ const ContactPage: React.FC = () => {
           >
             <h1 className="hero-title">Contactez-Nous</h1>
             <p className="hero-subtitle">
-              Nous sommes là pour répondre à toutes vos questions et organiser la garde de votre chien
+              Émilie est là pour répondre à toutes vos questions et organiser la garde de votre animal
             </p>
             <div className="hero-features">
               <div className="feature-item">
@@ -161,7 +157,6 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Info Section */}
       <section className="contact-info-section">
         <div className="container">
           <motion.div 
@@ -205,7 +200,6 @@ const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
       <section className="contact-form-section">
         <div className="container">
           <motion.div 
@@ -217,7 +211,7 @@ const ContactPage: React.FC = () => {
           >
             <div className="form-header">
               <h2>Envoyez-nous un Message</h2>
-              <p>Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais</p>
+              <p>Remplissez le formulaire ci-dessous et Émilie vous répondra dans les plus brefs délais</p>
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit}>
@@ -325,7 +319,6 @@ const ContactPage: React.FC = () => {
                 </button>
               </div>
 
-              {/* Messages de statut */}
               {submitStatus === 'success' && (
                 <motion.div 
                   className="success-message"
@@ -333,7 +326,7 @@ const ContactPage: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                 >
                   <FaCheckCircle />
-                  <span>Message envoyé avec succès ! Nous vous répondrons rapidement.</span>
+                  <span>Message envoyé avec succès ! Émilie vous répondra rapidement.</span>
                 </motion.div>
               )}
 
