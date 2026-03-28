@@ -63,8 +63,8 @@ const Footer: React.FC = () => {
       <div className="footer-bottom">
         <p>&copy; {currentYear} Le Monde Des Chiens Et Des Nacs — Émilie Cazes</p>
         <div className="footer-bottom-links">
-          <Link to="/about">Mentions légales</Link>
-          <Link to="/contact">Confidentialité</Link>
+          <Link to="/mentions-legales">Mentions légales</Link>
+          <Link to="/confidentialite">Confidentialité</Link>
         </div>
       </div>
     </footer>
