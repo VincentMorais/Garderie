@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <FaInstagram />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61583428500404" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <FaFacebook />
             </a>
           </div>
