@@ -58,8 +58,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Resend error:', error);
-    return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.' });
+  } catch (error: any) {
+    console.error('Resend error:', JSON.stringify(error));
+    return res.status(500).json({ error: error?.message || 'Erreur lors de l\'envoi de l\'email.', detail: error });
   }
 }

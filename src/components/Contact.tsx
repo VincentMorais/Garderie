@@ -47,7 +47,11 @@ const ContactPage: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error('send failed');
+      if (!res.ok) {
+        const data = await res.json();
+        console.error('API error:', data);
+        throw new Error(data.error || 'send failed');
+      }
 
       setSubmitStatus('success');
       setTimeout(() => {
