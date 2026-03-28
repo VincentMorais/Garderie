@@ -5,7 +5,6 @@ import {
   FaCalendarAlt, FaDog, FaUser, FaPhone, FaEnvelope,
   FaCheckCircle, FaPaw, FaArrowRight, FaArrowLeft, FaInfoCircle
 } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
 import { supabase } from '../lib/supabase';
 import 'react-calendar/dist/Calendar.css';
 import './Calendar.css';
@@ -169,24 +168,23 @@ const BookingCalendar: React.FC = () => {
 
     try {
       const serviceLabel = SERVICE_OPTIONS.find(s => s.value === form.serviceType)?.label || form.serviceType;
-      await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
-        {
+      await fetch('/api/send-reservation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           ownerName: `${form.firstName} ${form.lastName}`,
           ownerEmail: form.email,
           ownerPhone: form.phone,
           dogName: form.dogName,
-          dogBreed: form.dogBreed,
-          dogCount: String(form.dogCount),
+          dogBreed: form.dogBreed || '—',
+          dogCount: form.dogCount,
           serviceType: serviceLabel,
           startDate: formatDate(start),
           endDate: toKey(start) === toKey(end) ? formatDate(start) : formatDate(end),
-          message: form.message || 'Aucun',
-          specialNeeds: form.specialNeeds || 'Aucun',
-        },
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
-      );
+          message: form.message || '',
+          specialNeeds: form.specialNeeds || '',
+        }),
+      });
     } catch { /* email failure non critique */ }
 
     await loadOccupancy();

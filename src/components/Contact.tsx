@@ -13,7 +13,6 @@ import {
   FaUser,
   FaComments
 } from 'react-icons/fa';
-import emailjs from 'emailjs-com';
 import contactImage from '../assets/natsu.jpg';
 import './Contact.css';
 
@@ -41,32 +40,19 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      subject: formData.subject,
-      message: formData.message,
-    };
-
     try {
-      await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
-        templateParams,
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY!
-      );
-      
+      const res = await fetch('/api/send-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error('send failed');
+
       setSubmitStatus('success');
       setTimeout(() => {
         setSubmitStatus('idle');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       }, 3000);
     } catch (error) {
       console.error('Erreur:', error);
