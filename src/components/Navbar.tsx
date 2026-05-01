@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <h1>Le Monde Des Chiens Et Des Nacs</h1>
+          <img src="/logo-web.png" alt="Le Monde Des Chiens Et Des Nacs" className="navbar-logo" />
         </motion.div>
 
         <motion.div

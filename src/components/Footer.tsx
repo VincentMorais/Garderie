@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaw, FaClock } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
 
         <div className="footer-col footer-brand">
           <div className="footer-logo">
-            <FaPaw />
+            <img src="/logo-web.png" alt="Le Monde Des Chiens Et Des Nacs" className="footer-logo-img" />
           </div>
           <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
           <p>Garderie & Pension à Arpajon</p>

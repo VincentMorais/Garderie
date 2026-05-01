@@ -32,16 +32,13 @@
 }
 
 .footer-logo {
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, #f6c1c7, #e8a5ad);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: white;
   margin-bottom: 1rem;
+}
+
+.footer-logo-img {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-brand h3 {

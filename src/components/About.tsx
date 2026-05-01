@@ -256,6 +256,27 @@ const About: React.FC = () => {
               <div className="docs-list">
                 {[
                   {
+                    title: 'Diplôme',
+                    src: '/Diplome.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: 'Diplôme obtenu attestant des qualifications professionnelles.'
+                  },
+                  {
+                    title: 'Attestation de fin de formation',
+                    src: '/Attestation%20fin%20de%20formation.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: 'Attestation officielle de fin de formation.'
+                  },
+                  {
+                    title: "Attestation d'assurance Hiscox",
+                    src: "/Hiscox%20-%20Attestation%20d'assurance.pdf",
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: "Attestation d'assurance responsabilité civile professionnelle (renouvellement)."
+                  },
+                  {
                     title: 'Suivi de formation',
                     src: '/Attestation.pdf',
                     badge: 'temporary',

@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     name: "Jean Maisonobe",
     rating: 5,
     date: "il y a 5 mois",
-    comment: "Bonjour à tous, Après avoir récupérer un malinois battu à la SPA ma famille et moi sommes partis…",
+    comment: "Bonjour à tous, Après avoir récupérer un malinois battu à la SPA ma famille et moi sommes partis en vacances. Quel bonheur ce fut de trouver Emilie. En effet elle a gardé notre petit Canou et en a pris le plus grand soin (photos à l'appuie). Enfin une vrai professionnelle merci car c'est toujours dur et anxiogène de laisser son animal à quelqu'un, mais dans ce cas, aucun risque, je vous recommande vivement ces services. Un grand merci à vous et votre compagnon pour le soin apporter à mon chien.",
     visited: "Visité en février"
   },
   {
@@ -305,9 +305,7 @@ const testimonials: Testimonial[] = [
 
 const INITIAL_COUNT = 3;
 
-const avgRating = (
-  testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length
-).toFixed(1);
+const avgRating = "4.7";
 
 const Testimonials: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
@@ -385,7 +383,7 @@ const Testimonials: React.FC = () => {
             )}
           </button>
           <a
-            href="https://www.google.com/search?sca_esv=f9768091ef2272cb&sxsrf=ANbL-n4aKcfYKArDxwdC-nhhf5wJi6XGRw:1774641095706&q=Le+monde+des+chiens+et+des+nacs+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIysjQ0MLO0MATSRqZGlmaWRhsYGV8xqvikKuTm56WkKqSkFiskZ2Sm5hUrpJaAeXmJycUKjmWZxYtYiVIGAALEa3lnAAAA&rldimm=291069812912529692&tbm=lcl&hl=fr-FR&sa=X&ved=2ahUKEwiv5_Og7cCTAxUScKQEHeO8MKUQ9fQKegQIWhAG&biw=2560&bih=1271&dpr=1#lkt=LocalPoiReviews"
+            href="https://www.google.com/search?sca_esv=bdca29e42a30a9a8&sxsrf=ANbL-n44W9JSpKE_2Z8y0Oa4M8B7E9Hf3w:1777648434149&q=Le+monde+des+chiens+et+des+nacs+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIysjQ0MLO0MATSRqZGlmaWRhsYGV8xqvikKuTm56WkKqSkFiskZ2Sm5hUrpJaAeXmJycUKjmWZxYtYiVIGAALEa3lnAAAA&rldimm=291069812912529692&tbm=lcl&hl=fr-FR&sa=X&ved=2ahUKEwi1us-7sJiUAxWhdqQEHZZuCWoQ9fQKegQIUxAG&biw=1920&bih=911&dpr=1#lkt=LocalPoiReviews"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-google-cta"
