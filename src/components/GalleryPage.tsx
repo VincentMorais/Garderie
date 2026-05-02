@@ -272,7 +272,7 @@ const GalleryPage: React.FC = () => {
                   <img
                     src={photo.src}
                     alt={photo.name}
-                    loading={i < 8 ? 'eager' : 'lazy'}
+                    loading={i < 16 ? 'eager' : 'lazy'}
                     decoding="async"
                     width={300}
                     height={300}

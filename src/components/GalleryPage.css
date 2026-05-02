@@ -144,8 +144,6 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
   contain: layout paint;
-  content-visibility: auto;
-  contain-intrinsic-size: 220px 220px;
   transform: translateZ(0);
 }
 
