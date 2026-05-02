@@ -314,6 +314,13 @@ const About: React.FC = () => {
                     badgeLabel: 'Officiel',
                     description: "Attestation de certification ASV (Auxiliaire Spécialisé Vétérinaire).",
                   },
+                  {
+                    title: 'Formation 1er secours canin et félin',
+                    src: '/Attestation.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: "Attestation de formation aux premiers secours canins et félins.",
+                  },
                 ].map((doc) => (
                   <div key={doc.title} className="doc-row">
                     <div className="doc-row-icon">
