@@ -9,7 +9,6 @@ import chien2 from '../assets/chien2.png';
 import ambre from '../assets/ambre.jpeg';
 import baco from '../assets/baco.jpeg';
 import balooSamckScoobyNova from '../assets/baloo-samck-scooby-nova.jpg';
-import berlingo from '../assets/berlingo.jpg';
 import beau from '../assets/beau.png';
 import beya from '../assets/beya.jpeg';
 import billy from '../assets/billy.jpg';
@@ -23,8 +22,6 @@ import cheki from '../assets/cheki.jpeg';
 import cheyenne from '../assets/cheyenne.jpeg';
 import chino from '../assets/chino.jpeg';
 import coco from '../assets/coco.jpg';
-import duc from '../assets/duc.jpg';
-import duchesse from '../assets/duchesse.jpeg';
 import groot from '../assets/groot.jpg';
 import gueuteEpagnole from '../assets/gueute epagnole.jpeg';
 import haribo from '../assets/haribo.jpg';
@@ -36,17 +33,12 @@ import kos from '../assets/kos.jpeg';
 import lili from '../assets/lili.jpeg';
 import lipton from '../assets/lipton.jpeg';
 import lola from '../assets/lola.jpeg';
-import looping from '../assets/looping.jpeg';
-import natsu from '../assets/natsu.jpg';
 
 import chienA from '../assets/chien/Screenshot_20250828_031426_com.google.android.googlequicksearchbox_edit_24629724649887.jpg';
 import chienB from '../assets/chien/Screenshot_20250828_031204_com.google.android.googlequicksearchbox_edit_24671110338422.jpg';
 import chienC from '../assets/chien/Screenshot_20250828_031128_com.google.android.googlequicksearchbox_edit_24655220504570.jpg';
 import chienD from '../assets/chien/Screenshot_20250828_031944_com.facebook.katana.jpg';
-import chienE from '../assets/chien/Screenshot_20250828_031938_com.facebook.katana.jpg';
-import chienF from '../assets/chien/Screenshot_20250828_031934_com.facebook.katana.jpg';
 import chienG from '../assets/chien/soka.jpg';
-import chienH from '../assets/chien/Screenshot_20250828_030920_com.google.android.googlequicksearchbox_edit_24337439609306.jpg';
 import chienI from '../assets/chien/Screenshot_20250828_030602.jpg';
 import chienJ from '../assets/chien/IMG_20250531_162555.jpg';
 import chienK from '../assets/chien/Screenshot_20250828_025345_com.huawei.himovie.overseas.jpg';
@@ -102,8 +94,6 @@ const dogsPhotos: Photo[] = [
   { src: cheki, name: 'Cheki' },
   { src: cheyenne, name: 'Cheyenne' },
   { src: chino, name: 'Chino' },
-  { src: duc, name: 'Duc' },
-  { src: duchesse, name: 'Duchesse' },
   { src: groot, name: 'Groot' },
   { src: gueuteEpagnole, name: 'Gueute' },
   { src: haribo, name: 'Haribo' },
@@ -115,16 +105,11 @@ const dogsPhotos: Photo[] = [
   { src: lili, name: 'Lili' },
   { src: lipton, name: 'Lipton' },
   { src: lola, name: 'Lola' },
-  { src: looping, name: 'Looping' },
-  { src: natsu, name: 'Natsu' },
   { src: chienA, name: 'Rocky' },
   { src: chienB, name: 'Bella' },
   { src: chienC, name: 'Charlie' },
   { src: chienD, name: 'Nala' },
-  { src: chienE, name: 'Rex' },
-  { src: chienF, name: 'Daisy' },
   { src: chienG, name: 'Soka' },
-  { src: chienH, name: 'Oscar' },
   { src: chienI, name: 'Stella' },
   { src: chienK, name: 'Zara' },
   { src: chienR, name: 'Filou' },
@@ -139,37 +124,29 @@ const dogsPhotos: Photo[] = [
   { src: chienFF, name: 'Ugo' },
   { src: chienGG, name: 'Moka' },
   { src: chienII, name: 'Lara' },
-  { src: '/chien10.jpg', name: 'Compagnon' },
-  { src: '/chien12.jpg', name: 'Compagnon' },
-  { src: '/chien 14.jpg', name: 'Compagnon' },
-  { src: '/IMG_9286.jpg', name: 'Compagnon' },
-  { src: '/IMG_9287.jpg', name: 'Compagnon' },
-  { src: '/0033ba82-b091-4f68-91c7-78a5df18db2f.jpg', name: 'Compagnon' },
-  { src: '/073d7fc9-47db-4949-8ca5-d49bb4f34666.jpg', name: 'Compagnon' },
-  { src: '/0fb276b6-77ae-466c-a8f5-4cb39015d514.jpg', name: 'Compagnon' },
-  { src: '/165059ed-aac1-4a20-b8d0-5b882f039d72.jpg', name: 'Compagnon' },
-  { src: '/218e975a-2eaa-4bc7-9bba-4b7e5dbf7c15.jpg', name: 'Compagnon' },
-  { src: '/2e41c0a4-340e-4066-be4f-d26ab677ab9e.jpg', name: 'Compagnon' },
-  { src: '/2f23c822-a2d5-4603-81ce-d0265ac68b5b.jpg', name: 'Compagnon' },
-  { src: '/35cebf43-e32e-4fe0-aafc-3ad94cbe7633.jpg', name: 'Compagnon' },
-  { src: '/361f99f3-fd53-4194-a990-0719633fafc3.jpg', name: 'Compagnon' },
-  { src: '/46d3cbea-f052-42a1-9917-1c1450a99be6.jpg', name: 'Compagnon' },
-  { src: '/473edcc7-f90c-41ef-a598-b8c6899ab4db.jpg', name: 'Compagnon' },
-  { src: '/558e6e44-f0ed-4383-b35d-c38924e1c19f.jpg', name: 'Compagnon' },
-  { src: '/67a8657c-bfde-4740-b8f8-82142e552557.jpg', name: 'Compagnon' },
-  { src: '/74688ab2-5dd3-4760-adbd-7405fda4b704.jpg', name: 'Compagnon' },
-  { src: '/765557ae-cefb-4a7e-a078-327f5eeb8fde.jpg', name: 'Compagnon' },
-  { src: '/7c61bab0-55fd-4570-9e66-9f1a6334057d.jpg', name: 'Compagnon' },
-  { src: '/7e847b96-ce0c-4b2f-8bc6-e499dabcd5b7.jpg', name: 'Compagnon' },
-  { src: '/8cf3dd55-226b-449b-a8b3-8b090ca797dd.jpg', name: 'Compagnon' },
-  { src: '/9073d709-2e76-47a0-870d-a3afac81d1e5.jpg', name: 'Compagnon' },
-  { src: '/928fb059-4d84-4cc7-a595-31298b90d355.jpg', name: 'Compagnon' },
-  { src: '/a5e6cbaf-0b83-419d-84d9-27d7ba6bcd17.jpg', name: 'Compagnon' },
-  { src: '/ace4d5ba-5d19-45cc-b351-22ceb9856961.jpg', name: 'Compagnon' },
-  { src: '/b7acac69-1421-4387-b011-89c0a1a7652d.jpg', name: 'Compagnon' },
-  { src: '/dc3b8d87-64ec-473e-a6cf-1f0239a47d6f.jpg', name: 'Compagnon' },
-  { src: '/dde61c52-281c-4648-9a1d-c6d4cfc0e8d6.jpg', name: 'Compagnon' },
-  { src: '/e4e2d283-53ef-44aa-8f28-0c85875da051.jpg', name: 'Compagnon' },
+  { src: '/chien10.jpg', name: 'Mochi' },
+  { src: '/chien12.jpg', name: 'Pixel' },
+  { src: '/chien 14.jpg', name: 'Sushi' },
+  { src: '/IMG_9286.jpg', name: 'Pepper' },
+  { src: '/IMG_9287.jpg', name: 'Mango' },
+  { src: '/0033ba82-b091-4f68-91c7-78a5df18db2f.jpg', name: 'Biscuit' },
+  { src: '/073d7fc9-47db-4949-8ca5-d49bb4f34666.jpg', name: 'Praline' },
+  { src: '/0fb276b6-77ae-466c-a8f5-4cb39015d514.jpg', name: 'Noisette' },
+  { src: '/218e975a-2eaa-4bc7-9bba-4b7e5dbf7c15.jpg', name: 'Cookie' },
+  { src: '/2e41c0a4-340e-4066-be4f-d26ab677ab9e.jpg', name: 'Câline' },
+  { src: '/2f23c822-a2d5-4603-81ce-d0265ac68b5b.jpg', name: 'Joly' },
+  { src: '/35cebf43-e32e-4fe0-aafc-3ad94cbe7633.jpg', name: 'Pacha' },
+  { src: '/361f99f3-fd53-4194-a990-0719633fafc3.jpg', name: 'Tigrou' },
+  { src: '/46d3cbea-f052-42a1-9917-1c1450a99be6.jpg', name: 'Rio' },
+  { src: '/67a8657c-bfde-4740-b8f8-82142e552557.jpg', name: 'Wendy' },
+  { src: '/74688ab2-5dd3-4760-adbd-7405fda4b704.jpg', name: 'Sunny' },
+  { src: '/765557ae-cefb-4a7e-a078-327f5eeb8fde.jpg', name: 'Tofu' },
+  { src: '/7e847b96-ce0c-4b2f-8bc6-e499dabcd5b7.jpg', name: 'Juliette' },
+  { src: '/a5e6cbaf-0b83-419d-84d9-27d7ba6bcd17.jpg', name: 'Olaf' },
+  { src: '/ace4d5ba-5d19-45cc-b351-22ceb9856961.jpg', name: 'Babou' },
+  { src: '/b7acac69-1421-4387-b011-89c0a1a7652d.jpg', name: 'Filo' },
+  { src: '/dde61c52-281c-4648-9a1d-c6d4cfc0e8d6.jpg', name: 'Roxy' },
+  { src: '/e4e2d283-53ef-44aa-8f28-0c85875da051.jpg', name: 'Lulu' },
 ];
 
 const catsPhotos: Photo[] = [
@@ -186,7 +163,6 @@ const catsPhotos: Photo[] = [
   { src: chienZ, name: 'Balou' },
   { src: chienHH, name: 'Zéphyr' },
   { src: coco, name: 'Coco' },
-  { src: berlingo, name: 'Berlingo' },
   { src: billy, name: 'Billy' },
   { src: blanche, name: 'Blanche' },
 ];
@@ -196,6 +172,12 @@ const nacPhotos: Photo[] = [
   { src: lapin, name: 'Réglisse' },
   { src: chienU, name: 'Perle' },
   { src: chienQ, name: 'Léna' },
+  { src: '/165059ed-aac1-4a20-b8d0-5b882f039d72.jpg', name: 'Pistache' },
+  { src: '/558e6e44-f0ed-4383-b35d-c38924e1c19f.jpg', name: 'Snoopy' },
+  { src: '/473edcc7-f90c-41ef-a598-b8c6899ab4db.jpg', name: 'Bambi' },
+  { src: '/8cf3dd55-226b-449b-a8b3-8b090ca797dd.jpg', name: 'Léo' },
+  { src: '/9073d709-2e76-47a0-870d-a3afac81d1e5.jpg', name: 'Kira' },
+  { src: '/dc3b8d87-64ec-473e-a6cf-1f0239a47d6f.jpg', name: 'Skye' },
 ];
 
 const CATEGORIES: { id: Category; label: string; icon: React.ComponentType; photos: Photo[] }[] = [
@@ -227,7 +209,7 @@ const GalleryPage: React.FC = () => {
   };
 
   return (
-    <div className="gallery-page">
+    <div className="gallery-page" onContextMenu={(e) => e.preventDefault()}>
       <section className="gallery-hero">
         <div className="hero-background">
           <img src={heroImg} alt="Galerie" className="hero-image" />
@@ -285,6 +267,7 @@ const GalleryPage: React.FC = () => {
                   key={`${activeCategory}-${i}`}
                   className="gallery-item"
                   onClick={() => openLightbox(i)}
+                  onContextMenu={(e) => e.preventDefault()}
                 >
                   <img
                     src={photo.src}
@@ -293,10 +276,13 @@ const GalleryPage: React.FC = () => {
                     decoding="async"
                     width={300}
                     height={300}
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                   <div className="gallery-item-overlay">
                     <span>{photo.name}</span>
                   </div>
+                  <div className="gallery-item-shield" aria-hidden="true" />
                 </div>
               ))
             )}
@@ -325,8 +311,14 @@ const GalleryPage: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.85, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
+              onContextMenu={(e) => e.preventDefault()}
             >
-              <img src={photos[lightboxIndex].src} alt={photos[lightboxIndex].name} />
+              <img
+                src={photos[lightboxIndex].src}
+                alt={photos[lightboxIndex].name}
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
+              />
               <div className="lightbox-caption">{photos[lightboxIndex].name}</div>
             </motion.div>
             <button className="lightbox-nav lightbox-next" onClick={showNext}>

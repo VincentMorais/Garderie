@@ -13,7 +13,6 @@ import {
   FaClock,
   FaTimes,
   FaEye,
-  FaDownload,
   FaFilePdf
 } from 'react-icons/fa';
 import heroDogs from '../assets/accueilrose.jpg';
@@ -264,7 +263,7 @@ const About: React.FC = () => {
                 {[
                   {
                     title: 'Diplôme pet sitter',
-                    src: '/Diplome.pdf',
+                    src: '/Diplome-paysage.pdf',
                     badge: 'official',
                     badgeLabel: 'Officiel',
                     description: 'Diplôme pet sitter attestant des qualifications professionnelles.'
@@ -334,11 +333,13 @@ const About: React.FC = () => {
                       {doc.description && <p className="doc-row-desc">{doc.description}</p>}
                     </div>
                     <div className="doc-row-actions">
-                      <a href={doc.src} target="_blank" rel="noopener noreferrer" className="doc-btn doc-btn--view">
+                      <a
+                        href={`${doc.src}#toolbar=0&navpanes=0&scrollbar=0`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="doc-btn doc-btn--view"
+                      >
                         <FaEye /> <span>Voir</span>
-                      </a>
-                      <a href={doc.src} download className="doc-btn doc-btn--download">
-                        <FaDownload /> <span>Télécharger</span>
                       </a>
                     </div>
                   </div>

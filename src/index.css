@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Protection légère contre le téléchargement et le drag des images */
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
