@@ -214,40 +214,34 @@ const GalleryPage: React.FC = () => {
             })}
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              className="gallery-grid"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              {photos.length === 0 ? (
-                <div className="gallery-empty">
-                  <FaPaw className="empty-icon" />
-                  <p>Bientôt des photos à découvrir dans cette catégorie !</p>
+          <div key={activeCategory} className="gallery-grid">
+            {photos.length === 0 ? (
+              <div className="gallery-empty">
+                <FaPaw className="empty-icon" />
+                <p>Bientôt des photos à découvrir dans cette catégorie !</p>
+              </div>
+            ) : (
+              photos.map((photo, i) => (
+                <div
+                  key={`${activeCategory}-${i}`}
+                  className="gallery-item"
+                  onClick={() => openLightbox(i)}
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.name}
+                    loading={i < 8 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    width={300}
+                    height={300}
+                  />
+                  <div className="gallery-item-overlay">
+                    <span>{photo.name}</span>
+                  </div>
                 </div>
-              ) : (
-                photos.map((photo, i) => (
-                  <motion.div
-                    key={`${activeCategory}-${i}`}
-                    className="gallery-item"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: i * 0.03 }}
-                    onClick={() => openLightbox(i)}
-                    whileHover={{ scale: 1.03 }}
-                  >
-                    <img src={photo.src} alt={photo.name} loading="lazy" />
-                    <div className="gallery-item-overlay">
-                      <span>{photo.name}</span>
-                    </div>
-                  </motion.div>
-                ))
-              )}
-            </motion.div>
-          </AnimatePresence>
+              ))
+            )}
+          </div>
         </div>
       </section>
 
