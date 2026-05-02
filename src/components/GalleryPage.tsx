@@ -5,9 +5,7 @@ import './GalleryPage.css';
 
 import heroImg from '../assets/accueilrose.jpg';
 
-import chienHero from '../assets/chien.png';
 import chien2 from '../assets/chien2.png';
-import chienRose from '../assets/chien rose.jpg';
 import ambre from '../assets/ambre.jpeg';
 import baco from '../assets/baco.jpeg';
 import berlingo from '../assets/berlingo.jpg';
