@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  FaClock, 
-  FaPaw, 
-  FaHeart, 
-  FaStar, 
+import {
+  FaClock,
+  FaPaw,
+  FaHeart,
   FaCheckCircle,
   FaDog,
   FaWalking,
@@ -14,7 +13,6 @@ import {
   FaPlay,
   FaShieldAlt,
   FaCertificate,
-  FaUsers,
   FaLeaf
 } from 'react-icons/fa';
 import dogImage from '../assets/chienmangerrose.jpg';
@@ -93,23 +91,8 @@ const AboutPage: React.FC = () => {
         "Photos et vidéos quotidiennes",
         "Rapport de comportement"
       ],
-      popular: false,
-      icon: FaDog
-    },
-    {
-      name: "Abonnement Régulier",
-      price: "65€",
-      period: "5 jours",
-      savings: "Économisez 10€",
-      features: [
-        "Tous les services inclus",
-        "Réduction fidélité",
-        "Planning flexible",
-        "Suivi personnalisé",
-        "Priorité de réservation"
-      ],
       popular: true,
-      icon: FaStar
+      icon: FaDog
     },
     {
       name: "Demi-Journée",
@@ -124,63 +107,37 @@ const AboutPage: React.FC = () => {
       ],
       popular: false,
       icon: FaClock
-    },
-    {
-      name: "Soirée",
-      price: "Sur devis",
-      period: "garde du soir",
-      features: [
-        "Accueil en soirée",
-        "Activités calmes adaptées",
-        "Environnement sécurisé",
-        "Suivi personnalisé"
-      ],
-      popular: false,
-      icon: FaBed
-    },
-    {
-      name: "Adaptation",
-      price: "Incluse",
-      period: "avant garde définitive",
-      features: [
-        "Obligatoire avant toute garde",
-        "Découverte progressive",
-        "Évaluation du comportement",
-        "Rencontre avec les autres animaux"
-      ],
-      popular: false,
-      icon: FaLeaf
     }
   ];
 
   const additionalServices = [
     {
-      name: "Promenade",
-      price: "10€",
+      name: "Promenade des chiens",
+      price: "13€",
       description: "Sortie encadrée et sécurisée dans les espaces verts environnants",
       icon: FaWalking
     },
     {
-      name: "NAC",
+      name: "Garde à domicile NAC",
       price: "10€ / jour",
-      description: "Garde de nouveaux animaux de compagnie (lapins, rongeurs, oiseaux...)",
+      description: "Garde à domicile dédiée aux NAC (lapins, rongeurs, oiseaux...) : confort de leur environnement habituel",
       icon: FaLeaf
     },
     {
-      name: "Visite de chat",
+      name: "Visite à domicile (chat ou NAC)",
       price: "12€",
-      description: "Visite à domicile pour les chats : alimentation, jeux, câlins",
+      description: "Visite à domicile pour les chats ou NAC : alimentation, jeux, câlins",
       icon: FaPaw
     },
     {
-      name: "Garde Spéciale",
-      price: "Sur devis",
-      description: "Garde hors horaires habituels, visite à domicile ou garde spécifique de chat",
-      icon: FaUsers
+      name: "Adaptation",
+      price: "15€",
+      description: "Séance d'adaptation obligatoire avant toute garde définitive : découverte progressive et évaluation du comportement",
+      icon: FaLeaf
     },
     {
       name: "Toilettage",
-      price: "Tarif bientôt disponible",
+      price: "30€",
       description: "Bain, coupe, brossage et soins selon la race et les besoins",
       icon: FaShieldAlt
     },
@@ -364,9 +321,6 @@ const AboutPage: React.FC = () => {
                       <span className="price">{plan.price}</span>
                       <span className="period">{plan.period}</span>
                     </div>
-                    {plan.savings && (
-                      <div className="savings">{plan.savings}</div>
-                    )}
                   </div>
                   <ul className="pricing-features">
                     {plan.features.map((feature, featureIndex) => (

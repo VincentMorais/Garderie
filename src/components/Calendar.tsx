@@ -14,10 +14,11 @@ const MAX_DOGS = 5;
 const SERVICE_OPTIONS = [
   { value: 'journee',       label: 'Garde journalière',       price: '15€/jour' },
   { value: 'demi_journee',  label: 'Demi-journée (jusqu\'à 5h)', price: '12€' },
-  { value: 'soiree',        label: 'Soirée',                  price: 'Sur devis' },
-  { value: 'promenade',     label: 'Promenade',               price: '10€' },
-  { value: 'nac',           label: 'NAC',                     price: '10€/jour' },
-  { value: 'visite_chat',   label: 'Visite de chat à domicile', price: '12€' },
+  { value: 'promenade',     label: 'Promenade des chiens',    price: '13€' },
+  { value: 'garde_domicile_nac', label: 'Garde à domicile NAC', price: '10€/jour' },
+  { value: 'visite_domicile', label: 'Visite à domicile (chat ou NAC)', price: '12€' },
+  { value: 'adaptation',    label: 'Adaptation',              price: '15€' },
+  { value: 'toilettage',    label: 'Toilettage',              price: '30€' },
 ];
 
 const toKey = (d: Date) => d.toISOString().split('T')[0];

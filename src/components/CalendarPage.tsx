@@ -15,7 +15,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Quels documents sont nécessaires ?',
-    a: "Le carnet de vaccination à jour (rage obligatoire) ainsi qu'un certificat de bonne santé récent. Vous trouverez les formulaires à télécharger dans la section Certifications de la page d'accueil."
+    a: "Le carnet de vaccination à jour (rage et toux du chenil obligatoires) ainsi qu'un certificat de bonne santé récent. Vous trouverez les formulaires à télécharger dans la section Certifications de la page d'accueil."
   },
   {
     q: 'La nourriture est-elle fournie ?',
@@ -27,7 +27,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Quels sont les tarifs ?',
-    a: "Journée : 15€ | Demi-journée (5h max) : 12€ | Promenade : 10€ | NAC : 10€/jour | Visite de chat à domicile : 12€. Abonnement 5 journées : 65€. Soirée et autres prestations : sur devis."
+    a: "Journée : 15€ | Demi-journée (5h max) : 12€ | Promenade des chiens : 13€ | Garde à domicile NAC : 10€/jour | Visite à domicile (chat ou NAC) : 12€ | Adaptation : 15€ | Toilettage : 30€."
   },
   {
     q: 'Peut-on annuler une réservation ?',

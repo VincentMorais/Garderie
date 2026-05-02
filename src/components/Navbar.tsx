@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaHome, 
-  FaInfoCircle, 
-  FaCalendarAlt, 
+import {
+  FaHome,
+  FaInfoCircle,
+  FaCalendarAlt,
   FaEnvelope,
+  FaImages,
   FaBars,
   FaTimes
 } from 'react-icons/fa';
@@ -48,6 +49,7 @@ const Navbar: React.FC = () => {
   const navItems = [
     { path: '/', label: 'Accueil', icon: FaHome },
     { path: '/about', label: 'À propos', icon: FaInfoCircle },
+    { path: '/gallery', label: 'Galerie', icon: FaImages },
     { path: '/calendar', label: 'Planning', icon: FaCalendarAlt },
     { path: '/contact', label: 'Contact', icon: FaEnvelope },
   ];

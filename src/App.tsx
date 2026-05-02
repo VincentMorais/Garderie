@@ -4,6 +4,7 @@ import About from './components/About';
 import BookingCalendar from './components/CalendarPage';
 import ContactPage from './components/Contact';
 import AboutPage from './components/AboutPage';
+import GalleryPage from './components/GalleryPage';
 import MentionsLegales from './components/MentionsLegales';
 import Confidentialite from './components/Confidentialite';
 import Navbar from './components/Navbar';
@@ -25,6 +26,7 @@ const PublicLayout = () => (
         <Route path="/" element={<About />} />
         <Route path="/calendar" element={<BookingCalendar />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/confidentialite" element={<Confidentialite />} />

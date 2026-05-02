@@ -31,6 +31,7 @@ const Footer: React.FC = () => {
           <nav className="footer-nav">
             <Link to="/">Accueil</Link>
             <Link to="/about">À propos</Link>
+            <Link to="/gallery">Galerie</Link>
             <Link to="/calendar">Réservation</Link>
             <Link to="/contact">Contact</Link>
           </nav>

@@ -14,13 +14,11 @@ import {
   FaTimes,
   FaEye,
   FaDownload,
-  FaFilePdf,
-  FaLock
+  FaFilePdf
 } from 'react-icons/fa';
 import heroDogs from '../assets/accueilrose.jpg';
 import planningImg from '../assets/calendrier.jpg';
 import diplomaImg from '../assets/diplome.jpg';
-import InfiniteCarousel from '../components/InfinitieCarousel';
 import Testimonials from '../components/Testimonials';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './About.css';
@@ -105,7 +103,7 @@ const About: React.FC = () => {
             <p>Une garderie d'exception pour vos compagnons à quatre pattes</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="services-grid"
             variants={staggerContainer}
             initial="initial"
@@ -139,7 +137,18 @@ const About: React.FC = () => {
                 <FaHeart />
               </div>
               <h3>Soins Personnalisés</h3>
-              <p>Chaque animal reçoit une attention particulière et des soins adaptés</p>
+              <p>Découvrez nos prestations et l'attention apportée à chaque animal</p>
+              <Link to="/about" className="service-link">
+                Voir nos services <FaArrowRight />
+              </Link>
+            </motion.div>
+
+            <motion.div className="service-card" variants={fadeInUp}>
+              <div className="service-icon">
+                <FaPhone />
+              </div>
+              <h3>Une Question ?</h3>
+              <p>Émilie est à votre écoute pour toutes vos questions et besoins spécifiques</p>
               <Link to="/contact" className="service-link">
                 Nous contacter <FaArrowRight />
               </Link>
@@ -228,8 +237,6 @@ const About: React.FC = () => {
 
       <Testimonials />
 
-      <InfiniteCarousel />
-
       {isDiplomaModalOpen && (
         <motion.div 
           className="diploma-modal-overlay"
@@ -256,18 +263,18 @@ const About: React.FC = () => {
               <div className="docs-list">
                 {[
                   {
-                    title: 'Diplôme',
+                    title: 'Diplôme pet sitter',
                     src: '/Diplome.pdf',
                     badge: 'official',
                     badgeLabel: 'Officiel',
-                    description: 'Diplôme obtenu attestant des qualifications professionnelles.'
+                    description: 'Diplôme pet sitter attestant des qualifications professionnelles.'
                   },
                   {
-                    title: 'Attestation de fin de formation',
+                    title: 'Formation toiletteur',
                     src: '/Attestation%20fin%20de%20formation.pdf',
                     badge: 'official',
                     badgeLabel: 'Officiel',
-                    description: 'Attestation officielle de fin de formation.'
+                    description: 'Attestation officielle de formation toiletteur.'
                   },
                   {
                     title: "Attestation d'assurance Hiscox",
@@ -275,13 +282,6 @@ const About: React.FC = () => {
                     badge: 'official',
                     badgeLabel: 'Officiel',
                     description: "Attestation d'assurance responsabilité civile professionnelle (renouvellement)."
-                  },
-                  {
-                    title: 'Suivi de formation',
-                    src: '/Attestation.pdf',
-                    badge: 'temporary',
-                    badgeLabel: 'Temporaire',
-                    description: 'Formation en cours — ne constitue pas un diplôme final.'
                   },
                   {
                     title: 'Contrat de garde',
@@ -307,6 +307,13 @@ const About: React.FC = () => {
                     badge: 'official',
                     badgeLabel: 'Officiel',
                   },
+                  {
+                    title: 'Attestation ASV',
+                    src: '/Attestation-ASV.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: "Attestation de certification ASV (Auxiliaire Spécialisé Vétérinaire).",
+                  },
                 ].map((doc) => (
                   <div key={doc.title} className="doc-row">
                     <div className="doc-row-icon">
@@ -329,20 +336,6 @@ const About: React.FC = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div className="docs-coming-soon">
-                <h4>Documents à venir</h4>
-                <div className="docs-coming-grid">
-                  {[
-                    'Certification de pet sitting',
-                    'Attestation de certification ASV',
-                  ].map((doc) => (
-                    <div key={doc} className="docs-coming-item">
-                      <FaLock /> {doc}
-                    </div>
-                  ))}
-                </div>
               </div>
 
             </div>
