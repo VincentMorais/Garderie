@@ -8,22 +8,36 @@ import heroImg from '../assets/accueilrose.jpg';
 import chien2 from '../assets/chien2.png';
 import ambre from '../assets/ambre.jpeg';
 import baco from '../assets/baco.jpeg';
+import balooSamckScoobyNova from '../assets/baloo-samck-scooby-nova.jpg';
 import berlingo from '../assets/berlingo.jpg';
 import beau from '../assets/beau.png';
 import beya from '../assets/beya.jpeg';
 import billy from '../assets/billy.jpg';
 import blanche from '../assets/blanche.jpg';
 import broka from '../assets/broka.jpg';
+import brooklin from '../assets/brooklin.jpeg';
 import cali from '../assets/cali.jpeg';
-import lola from '../assets/lola.jpeg';
-import lipton from '../assets/lipton.jpeg';
-import kos from '../assets/kos.jpeg';
-import kopa from '../assets/kopa.jpg';
-import looping from '../assets/looping.jpeg';
 import canelleFilippine from '../assets/canelle et filippine.jpg';
+import caramel from '../assets/caramel.jpeg';
 import cheki from '../assets/cheki.jpeg';
 import cheyenne from '../assets/cheyenne.jpeg';
+import chino from '../assets/chino.jpeg';
 import coco from '../assets/coco.jpg';
+import duc from '../assets/duc.jpg';
+import duchesse from '../assets/duchesse.jpeg';
+import groot from '../assets/groot.jpg';
+import gueuteEpagnole from '../assets/gueute epagnole.jpeg';
+import haribo from '../assets/haribo.jpg';
+import iffy from '../assets/iffy.jpeg';
+import iko from '../assets/iko.jpeg';
+import jungel from '../assets/jungel.jpeg';
+import kopa from '../assets/kopa.jpg';
+import kos from '../assets/kos.jpeg';
+import lili from '../assets/lili.jpeg';
+import lipton from '../assets/lipton.jpeg';
+import lola from '../assets/lola.jpeg';
+import looping from '../assets/looping.jpeg';
+import natsu from '../assets/natsu.jpg';
 
 import chienA from '../assets/chien/Screenshot_20250828_031426_com.google.android.googlequicksearchbox_edit_24629724649887.jpg';
 import chienB from '../assets/chien/Screenshot_20250828_031204_com.google.android.googlequicksearchbox_edit_24671110338422.jpg';
@@ -77,18 +91,32 @@ const dogsPhotos: Photo[] = [
   { src: chien2, name: 'Luna' },
   { src: ambre, name: 'Ambre' },
   { src: baco, name: 'Baco' },
+  { src: balooSamckScoobyNova, name: 'Baloo, Samck, Scooby & Nova' },
   { src: beau, name: 'Beau' },
   { src: beya, name: 'Beya' },
   { src: broka, name: 'Broka' },
+  { src: brooklin, name: 'Brooklin' },
   { src: cali, name: 'Cali' },
-  { src: lola, name: 'Lola' },
-  { src: lipton, name: 'Lipton' },
-  { src: kos, name: 'Kos' },
-  { src: kopa, name: 'Kopa' },
-  { src: looping, name: 'Looping' },
   { src: canelleFilippine, name: 'Canelle & Filippine' },
+  { src: caramel, name: 'Caramel' },
   { src: cheki, name: 'Cheki' },
   { src: cheyenne, name: 'Cheyenne' },
+  { src: chino, name: 'Chino' },
+  { src: duc, name: 'Duc' },
+  { src: duchesse, name: 'Duchesse' },
+  { src: groot, name: 'Groot' },
+  { src: gueuteEpagnole, name: 'Gueute' },
+  { src: haribo, name: 'Haribo' },
+  { src: iffy, name: 'Iffy' },
+  { src: iko, name: 'Iko' },
+  { src: jungel, name: 'Jungel' },
+  { src: kopa, name: 'Kopa' },
+  { src: kos, name: 'Kos' },
+  { src: lili, name: 'Lili' },
+  { src: lipton, name: 'Lipton' },
+  { src: lola, name: 'Lola' },
+  { src: looping, name: 'Looping' },
+  { src: natsu, name: 'Natsu' },
   { src: chienA, name: 'Rocky' },
   { src: chienB, name: 'Bella' },
   { src: chienC, name: 'Charlie' },
