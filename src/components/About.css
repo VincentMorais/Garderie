@@ -203,6 +203,17 @@
   border: 1px solid rgba(246, 193, 199, 0.1);
   min-width: 0;
   word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home .service-card p {
+  flex: 1;
+}
+
+.home .service-card .service-link {
+  margin-top: auto;
 }
 
 .home .service-card:hover {
