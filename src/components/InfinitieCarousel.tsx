@@ -24,7 +24,7 @@ import img18 from '../assets/canelle et filippine.jpg';
 import img19 from '../assets/cheki.jpeg';
 import img20 from '../assets/cheyenne.jpeg';
 import img21 from '../assets/coco.jpg';
-import img22 from '../assets/cochonsdinde.jpg';
+import img22 from '../assets/cochonsdinde.webp';
 
 import chien1 from '../assets/chien/Screenshot_20250828_031426_com.google.android.googlequicksearchbox_edit_24629724649887.jpg';
 import chien2 from '../assets/chien/Screenshot_20250828_031204_com.google.android.googlequicksearchbox_edit_24671110338422.jpg';

@@ -15,12 +15,13 @@ import {
   FaEye,
   FaFilePdf
 } from 'react-icons/fa';
-import heroDogs from '../assets/accueilrose.jpg';
-import planningImg from '../assets/calendrier.jpg';
-import diplomaImg from '../assets/diplome.jpg';
+// heroDogs sert via /hero-accueil.webp (public/) pour matcher le preload
+import planningImg from '../assets/calendrier.webp';
+import diplomaImg from '../assets/diplome.webp';
 import Testimonials from '../components/Testimonials';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './About.css';
+import SEO from './SEO';
 
 const About: React.FC = () => {
   const [isDiplomaModalOpen, setIsDiplomaModalOpen] = useState(false);
@@ -49,9 +50,14 @@ const About: React.FC = () => {
 
   return (
     <div className="home">
+      <SEO
+        title="Garderie pour chiens et NAC à Arpajon (91)"
+        description="Garderie & pension canine et NAC à Arpajon (91290). Garde journalière, pension, promenades, visite de chat à domicile. Réservez en ligne."
+        path="/"
+      />
       <section className="hero-section">
         <div className="hero-background">
-          <img src={heroDogs} alt="Deux chiots heureux à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
+          <img src="/hero-accueil.webp" alt="Deux chiots heureux à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">

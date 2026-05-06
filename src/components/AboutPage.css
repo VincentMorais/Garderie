@@ -1,5 +1,4 @@
 /* Import des polices Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
 
 /* Variables CSS */
 :root {
@@ -643,3 +642,205 @@
   }
 }
   
+/* ============================================ */
+/*  Section Rencontrez Emilie                   */
+/* ============================================ */
+.emilie-section {
+  background: linear-gradient(180deg, #fdf0f2 0%, #ffffff 100%);
+  padding: 5rem 0;
+}
+
+.emilie-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.emilie-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+.emilie-bio {
+  color: #374151;
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.emilie-bio p {
+  margin-bottom: 1.1rem;
+}
+
+.emilie-intro {
+  font-size: 1.15rem;
+  color: #1f2937;
+  font-weight: 500;
+  border-left: 4px solid #f6c1c7;
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem !important;
+}
+
+.emilie-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.25rem;
+}
+
+.emilie-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: #4b5563;
+}
+
+.emilie-list li::before {
+  content: '🐾';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.emilie-quote-personal {
+  font-style: italic;
+  font-size: 1.08rem;
+  color: #c53064;
+  background: #fff;
+  border-left: 4px solid #c53064;
+  padding: 1rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+  margin: 1.5rem 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.emilie-cta-text {
+  font-weight: 500;
+  color: #1f2937;
+  font-size: 1.05rem;
+}
+
+/* Sidebar Emilie */
+.emilie-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.emilie-card-block {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(246, 193, 199, 0.4);
+}
+
+.emilie-card-block h3 {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.emilie-creds,
+.emilie-values {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.emilie-creds li,
+.emilie-values li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.emilie-creds li svg,
+.emilie-values li svg {
+  color: #c53064;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.emilie-creds li strong {
+  color: #1f2937;
+}
+
+.emilie-pets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.emilie-pets span {
+  background: #fdf0f2;
+  color: #1f2937;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Citations */
+.emilie-quotes {
+  margin: 3rem 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 0;
+}
+
+.emilie-quotes blockquote {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.75rem;
+  margin: 0;
+  font-style: italic;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #f6c1c7;
+}
+
+.emilie-quotes blockquote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #c53064;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .emilie-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .emilie-list {
+    grid-template-columns: 1fr;
+  }
+  .emilie-quotes {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .emilie-section {
+    padding: 3rem 0;
+  }
+  .emilie-card-block {
+    padding: 1.25rem;
+  }
+}

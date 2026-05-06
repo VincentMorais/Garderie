@@ -13,8 +13,9 @@ import {
   FaUser,
   FaComments
 } from 'react-icons/fa';
-import contactImage from '../assets/natsu.jpg';
+import contactImage from '../assets/natsu.webp';
 import './Contact.css';
+import SEO from './SEO';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -117,6 +118,11 @@ const ContactPage: React.FC = () => {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact — Garderie chien Arpajon"
+        description="Contactez Émilie au 06 50 15 94 11 ou par email. Garderie & pension à Arpajon (91290), 5 Impasse du Tacot."
+        path="/contact"
+      />
       <section className="contact-hero">
         <div className="hero-background">
           <img src={contactImage} alt="Chien Natsu, mascotte de la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
@@ -248,88 +254,100 @@ const ContactPage: React.FC = () => {
               <p>Remplissez le formulaire ci-dessous et Émilie vous répondra dans les plus brefs délais</p>
             </div>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <p className="form-required-hint">
+                <span aria-hidden="true">*</span> Champs obligatoires
+              </p>
               <div className="form-grid">
-                <div className="form-group">
-                  <label htmlFor="name">
-                    <FaUser className="input-icon" />
-                    Nom complet *
-                  </label>
+                <div className="form-group form-group--floating">
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Votre nom complet"
+                    placeholder=" "
+                    autoComplete="name"
                     required
+                    aria-required="true"
                   />
+                  <label htmlFor="name">
+                    <FaUser className="input-icon" aria-hidden="true" />
+                    <span>Nom complet *</span>
+                  </label>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="email">
-                    <FaEnvelope className="input-icon" />
-                    Email *
-                  </label>
+                <div className="form-group form-group--floating">
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="votre@email.com"
+                    placeholder=" "
+                    autoComplete="email"
                     required
+                    aria-required="true"
                   />
+                  <label htmlFor="email">
+                    <FaEnvelope className="input-icon" aria-hidden="true" />
+                    <span>Email *</span>
+                  </label>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="phone">
-                    <FaPhone className="input-icon" />
-                    Téléphone
-                  </label>
+                <div className="form-group form-group--floating">
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="06 12 34 56 78"
+                    placeholder=" "
+                    autoComplete="tel"
+                    pattern="[0-9 +]{10,16}"
+                    title="Numéro français à 10 chiffres attendu (ex : 06 12 34 56 78)"
                   />
+                  <label htmlFor="phone">
+                    <FaPhone className="input-icon" aria-hidden="true" />
+                    <span>Téléphone (facultatif)</span>
+                  </label>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="subject">
-                    <FaComments className="input-icon" />
-                    Sujet *
-                  </label>
+                <div className="form-group form-group--floating form-group--select">
                   <select
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                   >
-                    <option value="">Choisir un sujet</option>
+                    <option value="" disabled>Choisir un sujet</option>
                     {subjects.map((subject, index) => (
                       <option key={index} value={subject}>{subject}</option>
                     ))}
                   </select>
+                  <label htmlFor="subject">
+                    <FaComments className="input-icon" aria-hidden="true" />
+                    <span>Sujet *</span>
+                  </label>
                 </div>
 
-                <div className="form-group full-width">
-                  <label htmlFor="message">
-                    <FaComments className="input-icon" />
-                    Message *
-                  </label>
+                <div className="form-group form-group--floating full-width">
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Décrivez votre demande ou question..."
+                    placeholder=" "
                     rows={6}
                     required
+                    aria-required="true"
                   />
+                  <label htmlFor="message">
+                    <FaComments className="input-icon" aria-hidden="true" />
+                    <span>Message *</span>
+                  </label>
                 </div>
               </div>
 

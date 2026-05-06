@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LegalPage.css';
+import SEO from './SEO';
 
 const MentionsLegales: React.FC = () => {
   return (
     <div className="legal-page">
+      <SEO
+        title="Mentions Légales"
+        description="Mentions légales du site Le Monde des Chiens et des NACs."
+        path="/mentions-legales"
+        noindex
+      />
       <h1>Mentions Légales</h1>
       <p className="legal-subtitle">Conformément aux articles 6-III et 19 de la Loi n° 2004-575 du 21 juin 2004 pour la Confiance dans l'Économie Numérique (LCEN)</p>
 

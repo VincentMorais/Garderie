@@ -1,15 +1,27 @@
 {
-  "short_name": "Le Monde Des Chiens Et Des Nacs",
-  "name": "Le Monde Des Chiens Et Des Nacs",
+  "short_name": "Garderie Arpajon",
+  "name": "Le Monde des Chiens et des NACs",
+  "description": "Garderie & pension canine et NAC à Arpajon (91290).",
   "icons": [
     {
-      "src": "logo-web.png",
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "android-chrome-192x192.png",
       "type": "image/png",
-      "sizes": "any"
+      "sizes": "192x192"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#f6c1c7",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "lang": "fr"
 }

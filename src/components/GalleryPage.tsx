@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaDog, FaCat, FaPaw, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './GalleryPage.css';
+import SEO from './SEO';
 
-import heroImg from '../assets/accueilrose.jpg';
+import heroImg from '../assets/accueilrose.webp';
 
 import chien2 from '../assets/chien2.png';
 import ambre from '../assets/ambre.jpeg';
@@ -69,7 +70,7 @@ import chienII from '../assets/chien/2023-12-16 07.41.27.jpg';
 
 import chatImg from '../assets/chat.png';
 
-import cochonsdinde from '../assets/cochonsdinde.jpg';
+import cochonsdinde from '../assets/cochonsdinde.webp';
 import lapin from '../assets/lapin.png';
 
 type Category = 'chiens' | 'chats' | 'nac';
@@ -210,6 +211,11 @@ const GalleryPage: React.FC = () => {
 
   return (
     <div className="gallery-page" onContextMenu={(e) => e.preventDefault()}>
+      <SEO
+        title="Galerie photos — Pensionnaires de la garderie d'Arpajon"
+        description="Découvrez les chiens, chats, lapins et autres NAC qui passent leurs journées à la garderie d'Arpajon."
+        path="/gallery"
+      />
       <section className="gallery-hero">
         <div className="hero-background">
           <img src={heroImg} alt="Galerie photos des animaux à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />

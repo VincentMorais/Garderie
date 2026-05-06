@@ -5,8 +5,9 @@ import {
   FaPaw, FaChevronDown, FaCheckCircle, FaInfoCircle
 } from 'react-icons/fa';
 import Calendar from '../components/Calendar';
-import dogImage from '../assets/chien rose.jpg';
+import dogImage from '../assets/chien rose.webp';
 import './CalendarPage.css';
+import SEO from './SEO';
 
 const FAQ_ITEMS = [
   {
@@ -40,6 +41,11 @@ const CalendarPage: React.FC = () => {
 
   return (
     <div className="calendar-page">
+      <SEO
+        title="Réservation en ligne — Garderie chien Arpajon"
+        description="Réservez en ligne la garde de votre chien ou NAC à la garderie d'Arpajon (91). Calendrier en temps réel, 5 animaux maximum. Confirmation sous 24h."
+        path="/calendar"
+      />
 
       <section className="calendar-hero">
         <div className="hero-background">

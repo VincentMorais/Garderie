@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-snap/src/puppeteer_utils.js b/node_modules/react-snap/src/puppeteer_utils.js
+index 0000000..1111111 100644
+--- a/node_modules/react-snap/src/puppeteer_utils.js
++++ b/node_modules/react-snap/src/puppeteer_utils.js
+@@ -211,7 +211,6 @@ const crawl = async opt => {
+     if (!shuttingDown && !skipExistingFile) {
+       try {
+         const page = await browser.newPage();
+-        await page._client.send("ServiceWorker.disable");
+         await page.setCacheEnabled(options.puppeteer.cache);
+         if (options.viewport) await page.setViewport(options.viewport);
+         if (options.skipThirdPartyRequests)

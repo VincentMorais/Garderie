@@ -1,3 +1,37 @@
+/* ============================================ */
+/*  Variables de couleur (audit contraste WCAG) */
+/* ============================================ */
+:root {
+  /* Rose poudre (decoratif uniquement, contraste insuffisant pour texte) */
+  --brand-rose: #f6c1c7;
+  --brand-rose-light: #fdf0f2;
+  --brand-rose-medium: #e8a5ad;
+
+  /* Rose accessible (WCAG AA pour texte sur fond blanc, ratio 4.5:1) */
+  --brand-rose-dark: #c53064;
+  --brand-rose-darker: #a8254f;
+
+  /* Texte */
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --surface-soft: #fdf0f2;
+
+  /* Focus */
+  --focus-ring: #2563eb;
+}
+
+/* Regles d'usage :
+   - --brand-rose         : fonds, badges, decorations
+   - --brand-rose-medium  : hover sur boutons rose clair
+   - --brand-rose-dark    : tout texte/icone qui doit rester lisible
+                            (CTA, liens, accents typographiques)
+   - --brand-rose-darker  : etat actif/pressed des CTA roses fonces
+*/
+
 /* Dans App.css ou dans un fichier CSS global */
 
 html, body {

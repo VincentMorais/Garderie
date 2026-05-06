@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LegalPage.css';
+import SEO from './SEO';
 
 const Confidentialite: React.FC = () => {
   return (
     <div className="legal-page">
+      <SEO
+        title="Politique de Confidentialite (RGPD)"
+        description="Politique de confidentialite du site Le Monde des Chiens et des NACs."
+        path="/confidentialite"
+        noindex
+      />
       <h1>Politique de Confidentialité</h1>
       <p className="legal-subtitle">Conformément au Règlement Général sur la Protection des Données (RGPD) — UE 2016/679 — en vigueur depuis le 25 mai 2018</p>
 

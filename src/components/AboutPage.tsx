@@ -15,8 +15,9 @@ import {
   FaCertificate,
   FaLeaf
 } from 'react-icons/fa';
-import dogImage from '../assets/chienmangerrose.jpg';
+import dogImage from '../assets/chienmangerrose.webp';
 import './AboutPage.css';
+import SEO from './SEO';
 
 const AboutPage: React.FC = () => {
   const navigate = useNavigate();
@@ -151,6 +152,11 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="about-page">
+      <SEO
+        title="À Propos — Émilie, votre dog sitter à Arpajon"
+        description="Découvrez l'approche personnalisée de la garderie d'Émilie à Arpajon : journée type, tarifs transparents, services pour chiens et NAC, environnement sécurisé."
+        path="/about"
+      />
       <section className="about-hero">
         <div className="hero-background">
           <img src={dogImage} alt="Chien qui joue à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
@@ -182,6 +188,128 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Section "Rencontrez Emilie" - bio detaillee */}
+      <section className="emilie-section">
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2>Rencontrez Émilie</h2>
+            <p>Votre dog sitter passionnée à Arpajon</p>
+          </motion.div>
+
+          <motion.div
+            className="emilie-grid"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="emilie-bio">
+              <p className="emilie-intro">
+                Je suis depuis toute petite avec des animaux : lapins, chiens, chats, chevaux,
+                poissons, souris, furets et perruches. Je me suis occupée des animaux de
+                ma famille — trois chiens, deux chevaux, deux souris, trois perruches et trois chats.
+              </p>
+
+              <p>
+                Cela fait plusieurs années que je garde vos compagnons, soit à la garderie,
+                soit à votre domicile, pour&nbsp;:
+              </p>
+              <ul className="emilie-list">
+                <li>Donner à manger à vos boules de poils</li>
+                <li>Les sortir et les promener</li>
+                <li>Nettoyer leur espace</li>
+                <li>Partager leurs moments préférés : câlins et jeux</li>
+              </ul>
+
+              <p>
+                Je suis quelqu'un de <strong>généreuse et sérieuse</strong>. Je respecte les règles
+                des familles : je n'irai jamais à l'encontre de leurs habitudes. Je peux administrer
+                les médicaments par voie orale (pas par voie intraveineuse).
+              </p>
+
+              <p>
+                Je propose également du <strong>toilettage</strong> pour les animaux en garde.
+              </p>
+
+              <p className="emilie-quote-personal">
+                « J'adore les animaux. Sans eux, je suis triste — ils sont une bouffée
+                de chaleur et d'amour, comme un enfant, avec leurs moments de bêtise et
+                de gentillesse. »
+              </p>
+
+              <p className="emilie-cta-text">
+                Si mon profil vous a plu, n'hésitez pas à me contacter — ce sera avec plaisir
+                que je vous rencontrerai, vous et votre quatre-pattes.
+              </p>
+            </div>
+
+            <aside className="emilie-card">
+              <div className="emilie-card-block">
+                <h3>Diplômes &amp; Formations</h3>
+                <ul className="emilie-creds">
+                  <li>
+                    <FaCertificate aria-hidden="true" />
+                    <span><strong>ACACED</strong> — Attestation de Connaissances pour les Animaux de Compagnie d'Espèces Domestiques</span>
+                  </li>
+                  <li>
+                    <FaCertificate aria-hidden="true" />
+                    <span><strong>ASV</strong> — Auxiliaire Spécialisée Vétérinaire</span>
+                  </li>
+                  <li>
+                    <FaCertificate aria-hidden="true" />
+                    <span><strong>Toilettage</strong> — Formation en cours</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="emilie-card-block">
+                <h3>Mes valeurs</h3>
+                <ul className="emilie-values">
+                  <li><FaHeart aria-hidden="true" /> 5 animaux maximum simultanément</li>
+                  <li><FaShieldAlt aria-hidden="true" /> Respect strict des règles familiales</li>
+                  <li><FaPaw aria-hidden="true" /> Photos et vidéos quotidiennes</li>
+                </ul>
+              </div>
+
+              <div className="emilie-card-block emilie-pets-block">
+                <h3>Animaux que j'accueille avec passion</h3>
+                <div className="emilie-pets">
+                  <span>🐶 Chiens</span>
+                  <span>🐱 Chats</span>
+                  <span>🐰 Lapins</span>
+                  <span>🐦 Oiseaux &amp; perruches</span>
+                  <span>🐹 Rongeurs</span>
+                  <span>🐴 Chevaux</span>
+                </div>
+              </div>
+            </aside>
+          </motion.div>
+
+          <motion.figure
+            className="emilie-quotes"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <blockquote>
+              « Les animaux ne manquent pas de raison, ils manquent seulement de paroles. »
+              <cite>— Jean de La Fontaine</cite>
+            </blockquote>
+            <blockquote>
+              « J'ai toujours préféré la compagnie des animaux à celle des hommes. Ils sont plus simples. »
+              <cite>— Ernest Hemingway</cite>
+            </blockquote>
+          </motion.figure>
         </div>
       </section>
 
