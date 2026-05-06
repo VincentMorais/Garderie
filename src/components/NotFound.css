@@ -1,0 +1,73 @@
+.not-found-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #fff 0%, #fdf0f2 100%);
+}
+
+.not-found-content {
+  max-width: 520px;
+  text-align: center;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  color: #f6c1c7;
+  margin-bottom: 1.5rem;
+}
+
+.not-found-content h1 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.not-found-content p {
+  color: #6b7280;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.not-found-btn--primary {
+  background: #f6c1c7;
+  color: #1f2937;
+}
+
+.not-found-btn--primary:hover {
+  background: #e8a5ad;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.not-found-btn--secondary {
+  background: #fff;
+  color: #1f2937;
+  border: 2px solid #f6c1c7;
+}
+
+.not-found-btn--secondary:hover {
+  background: #fef2f2;
+  transform: translateY(-2px);
+}

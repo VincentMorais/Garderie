@@ -43,7 +43,7 @@ const CalendarPage: React.FC = () => {
 
       <section className="calendar-hero">
         <div className="hero-background">
-          <img src={dogImage} alt="Chien" className="hero-image" />
+          <img src={dogImage} alt="Chien attendant sa réservation à la garderie" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay" />
         </div>
         <div className="hero-content">

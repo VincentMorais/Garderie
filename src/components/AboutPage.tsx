@@ -132,7 +132,7 @@ const AboutPage: React.FC = () => {
     {
       name: "Adaptation",
       price: "15€",
-      description: "Séance d'adaptation obligatoire avant toute garde définitive : découverte progressive et évaluation du comportement",
+      description: "Séance d'adaptation obligatoire avant toute garde définitive (environ 1h) : découverte progressive de l'environnement, évaluation du comportement et rencontre avec les autres animaux. La garantie d'un bon démarrage.",
       icon: FaLeaf
     },
     {
@@ -142,9 +142,9 @@ const AboutPage: React.FC = () => {
       icon: FaShieldAlt
     },
     {
-      name: "Éducation Comportementale",
-      price: "Tarif bientôt disponible",
-      description: "Séances individuelles pour corriger les comportements indésirables",
+      name: "Forfaits longue durée",
+      price: "Sur devis",
+      description: "Forfaits semaine, week-end et vacances. Demandez votre devis personnalisé via le formulaire de contact.",
       icon: FaCertificate
     }
   ];
@@ -153,7 +153,7 @@ const AboutPage: React.FC = () => {
     <div className="about-page">
       <section className="about-hero">
         <div className="hero-background">
-          <img src={dogImage} alt="Chien qui joue" className="hero-image" />
+          <img src={dogImage} alt="Chien qui joue à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">
@@ -163,7 +163,7 @@ const AboutPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h1 className="hero-title">À Propos de Notre Garderie</h1>
+            <h1 className="hero-title">À Propos de Notre Garderie à Arpajon (91)</h1>
             <p className="hero-subtitle">
               Découvrez notre approche personnalisée et nos tarifs transparents
             </p>

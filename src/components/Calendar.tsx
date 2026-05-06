@@ -415,8 +415,17 @@ const BookingCalendar: React.FC = () => {
     <motion.div className="booking-success"
       initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
       <div className="success-icon-wrap"><FaCheckCircle /></div>
-      <h3>Demande envoyée !</h3>
-      <p>Votre demande a bien été enregistrée.<br />Émilie vous contactera sous 24h pour confirmer.</p>
+      <h3>Merci {form.firstName || ''}, votre demande est bien arrivée !</h3>
+      <p>
+        Émilie vous contactera <strong>sous 24h</strong> au {form.phone || 'numéro indiqué'} pour
+        confirmer votre réservation.
+        <br />
+        Pas de réponse ? Joignez-nous au{' '}
+        <a href="tel:0650159411"><strong>06 50 15 94 11</strong></a> ou par email à{' '}
+        <a href="mailto:contact@lemondedeschiensetdesnacs.com">
+          contact@lemondedeschiensetdesnacs.com
+        </a>.
+      </p>
 
       {selectedRange && (
         <div className="success-recap">
@@ -443,6 +452,11 @@ const BookingCalendar: React.FC = () => {
           </div>
         </div>
       )}
+
+      <p className="success-note">
+        Un email de récapitulatif vous a été envoyé. Pensez à vérifier vos spams si vous ne le
+        recevez pas.
+      </p>
 
       <button className="btn-next" onClick={reset}>Faire une nouvelle réservation</button>
     </motion.div>

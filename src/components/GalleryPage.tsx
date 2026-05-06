@@ -212,7 +212,7 @@ const GalleryPage: React.FC = () => {
     <div className="gallery-page" onContextMenu={(e) => e.preventDefault()}>
       <section className="gallery-hero">
         <div className="hero-background">
-          <img src={heroImg} alt="Galerie" className="hero-image" />
+          <img src={heroImg} alt="Galerie photos des animaux à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay" />
         </div>
         <div className="hero-content">
@@ -315,8 +315,10 @@ const GalleryPage: React.FC = () => {
             >
               <img
                 src={photos[lightboxIndex].src}
-                alt={photos[lightboxIndex].name}
+                alt={`${photos[lightboxIndex].name} en pension à la garderie d'Arpajon`}
                 draggable={false}
+                loading="eager"
+                decoding="async"
                 onContextMenu={(e) => e.preventDefault()}
               />
               <div className="lightbox-caption">{photos[lightboxIndex].name}</div>

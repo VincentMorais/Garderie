@@ -478,3 +478,56 @@
   }
 }
   
+/* ===== Section Carte Google Maps ===== */
+.contact-map-section {
+  padding: 4rem 0;
+  background: var(--bg-secondary);
+}
+
+.contact-map-wrapper {
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-medium);
+}
+
+.contact-map-wrapper iframe {
+  display: block;
+}
+
+.contact-map-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.contact-map-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  background: var(--primary-color);
+  color: #1f2937;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: var(--transition);
+}
+
+.contact-map-button:hover {
+  background: var(--primary-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+@media (max-width: 600px) {
+  .contact-map-section {
+    padding: 2.5rem 0;
+  }
+  .contact-map-wrapper iframe {
+    height: 320px;
+  }
+}

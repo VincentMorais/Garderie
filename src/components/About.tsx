@@ -51,7 +51,7 @@ const About: React.FC = () => {
     <div className="home">
       <section className="hero-section">
         <div className="hero-background">
-          <img src={heroDogs} alt="Deux chiots" className="hero-image" />
+          <img src={heroDogs} alt="Deux chiots heureux à la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">
@@ -65,7 +65,7 @@ const About: React.FC = () => {
               Le Monde Des Chiens Et Des Nacs
             </h1>
             <p className="hero-subtitle">
-              Votre chien, entre de bonnes mains
+              Garderie & pension pour chiens et NAC à Arpajon (91) — votre compagnon entre de bonnes mains
             </p>
             <div className="hero-features">
               <div className="feature-item">
@@ -168,7 +168,7 @@ const About: React.FC = () => {
             <div className="info-card planning-card">
               <Link to="/calendar" className="info-link">
                 <div className="info-image">
-                  <img src={planningImg} alt="Planning" />
+                  <img src={planningImg} alt="Calendrier de réservation de la garderie" loading="lazy" decoding="async" width="600" height="400" />
                   <div className="info-overlay">
                     <FaCalendarAlt className="info-icon" />
                   </div>
@@ -184,7 +184,7 @@ const About: React.FC = () => {
             <div className="info-card diploma-card">
               <button onClick={openDiplomaModal} className="diploma-button">
                 <div className="info-image">
-                  <img src={diplomaImg} alt="Diplôme" />
+                  <img src={diplomaImg} alt="Diplôme et certifications professionnelles d'Émilie" loading="lazy" decoding="async" width="600" height="400" />
                   <div className="info-overlay">
                     <FaCertificate className="info-icon" />
                   </div>

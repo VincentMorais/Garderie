@@ -119,7 +119,7 @@ const ContactPage: React.FC = () => {
     <div className="contact-page">
       <section className="contact-hero">
         <div className="hero-background">
-          <img src={contactImage} alt="Chien de contact" className="hero-image" />
+          <img src={contactImage} alt="Chien Natsu, mascotte de la garderie d'Arpajon" className="hero-image" loading="eager" fetchPriority="high" decoding="async" width="1920" height="1080" />
           <div className="hero-overlay"></div>
         </div>
         <div className="hero-content">
@@ -186,6 +186,50 @@ const ContactPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section Carte Google Maps */}
+      <section className="contact-map-section">
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2>Nous Trouver</h2>
+            <p>5 Impasse du Tacot, 91290 Arpajon — à 30 min au sud de Paris</p>
+          </motion.div>
+          <motion.div
+            className="contact-map-wrapper"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <iframe
+              title="Carte de la garderie Le Monde des Chiens et des NACs à Arpajon"
+              src="https://www.google.com/maps?q=5+Impasse+du+Tacot,+91290+Arpajon&output=embed"
+              width="100%"
+              height="400"
+              style={{ border: 0, borderRadius: '12px' }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+            <div className="contact-map-actions">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=5+Impasse+du+Tacot,+91290+Arpajon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-map-button"
+              >
+                <FaMapMarkerAlt /> Obtenir l'itinéraire
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>

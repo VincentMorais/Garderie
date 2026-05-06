@@ -1,0 +1,57 @@
+/* Sticky bar mobile : Appeler / Réserver */
+.sticky-mobile-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sticky-mobile-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    display: flex;
+    background: #fff;
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.12);
+    padding: 0.5rem 0.75rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    gap: 0.6rem;
+  }
+
+  .sticky-mobile-bar__btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  }
+
+  .sticky-mobile-bar__btn--call {
+    background: #f6c1c7;
+    color: #1f2937;
+  }
+
+  .sticky-mobile-bar__btn--book {
+    background: #1f2937;
+    color: #fff;
+  }
+
+  .sticky-mobile-bar__btn:active {
+    transform: scale(0.98);
+  }
+
+  .sticky-mobile-bar__btn:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  /* Décale le contenu pour ne pas qu'il soit caché par la barre */
+  body {
+    padding-bottom: 70px;
+  }
+}

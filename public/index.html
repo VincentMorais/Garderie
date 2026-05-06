@@ -3,41 +3,169 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/logo-web.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo-web.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f6c1c7" />
-    
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.lemondedeschiensetdesnacs.com/" />
+
     <!-- SEO Meta Tags -->
-    <title>Le Monde Des Chiens Et Des Nacs - Garderie & Pension à Arpajon</title>
+    <title>Garderie pour chiens et NAC à Arpajon (91) — Le Monde des Chiens et des NACs</title>
     <meta
       name="description"
-      content="Garderie canine à Arpajon (91290). Garde journalière, pension, promenade et NAC. Émilie prend soin de vos animaux avec passion. Réservez en ligne !"
+      content="Garderie & pension canine et NAC à Arpajon (91290). Garde journalière, pension, promenade, visite à domicile. Émilie, dog sitter certifiée, prend soin de vos animaux avec passion. Réservez en ligne."
     />
-    <meta name="keywords" content="garderie chien, pension chien, garde chien, Arpajon, 91290, Essonne, NAC, garde animale, dog sitter" />
     <meta name="author" content="Emilie Cazes" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="fr" />
     <meta name="geo.region" content="FR-91" />
     <meta name="geo.placename" content="Arpajon" />
+    <meta name="geo.position" content="48.5905;2.2479" />
+    <meta name="ICBM" content="48.5905, 2.2479" />
 
     <!-- Open Graph pour les réseaux sociaux -->
-    <meta property="og:title" content="Le Monde Des Chiens Et Des Nacs - Garderie & Pension à Arpajon" />
-    <meta property="og:description" content="Garderie canine à Arpajon. Garde journalière, pension, promenade et NAC. Émilie prend soin de vos animaux avec passion." />
-    <meta property="og:image" content="%PUBLIC_URL%/logo-web.png" />
-    <meta property="og:url" content="%REACT_APP_SITE_URL%" />
+    <meta property="og:title" content="Garderie pour chiens et NAC à Arpajon (91) — Le Monde des Chiens et des NACs" />
+    <meta property="og:description" content="Garderie & pension à Arpajon. Garde journalière, pension, promenade et NAC. Émilie prend soin de vos animaux avec passion." />
+    <meta property="og:image" content="https://www.lemondedeschiensetdesnacs.com/logo-web.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.lemondedeschiensetdesnacs.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Le Monde des Chiens et des NACs" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Le Monde Des Chiens Et Des Nacs - Garderie & Pension à Arpajon" />
-    <meta name="twitter:description" content="Garderie canine à Arpajon. Émilie prend soin de vos animaux avec passion." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/logo-web.png" />
-    
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo-web.png" />
+    <meta name="twitter:title" content="Garderie pour chiens et NAC à Arpajon (91)" />
+    <meta name="twitter:description" content="Garderie & pension canine et NAC à Arpajon. Émilie prend soin de vos animaux avec passion." />
+    <meta name="twitter:image" content="https://www.lemondedeschiensetdesnacs.com/logo-web.png" />
+
+    <!-- DNS prefetch / preconnect pour les ressources externes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Schema.org JSON-LD : LocalBusiness / AnimalShelter -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "AnimalShelter"],
+      "name": "Le Monde des Chiens et des NACs",
+      "image": "https://www.lemondedeschiensetdesnacs.com/logo-web.png",
+      "@id": "https://www.lemondedeschiensetdesnacs.com",
+      "url": "https://www.lemondedeschiensetdesnacs.com",
+      "telephone": "+33-6-50-15-94-11",
+      "email": "contact@lemondedeschiensetdesnacs.com",
+      "description": "Garderie et pension pour chiens et NAC (Nouveaux Animaux de Compagnie) à Arpajon dans l'Essonne (91). Garde journalière, pension, promenades, visites à domicile.",
+      "priceRange": "10-30 €",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5 Impasse du Tacot",
+        "addressLocality": "Arpajon",
+        "postalCode": "91290",
+        "addressRegion": "Essonne",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.5905,
+        "longitude": 2.2479
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Arpajon" },
+        { "@type": "City", "name": "Brétigny-sur-Orge" },
+        { "@type": "City", "name": "Saint-Germain-lès-Arpajon" },
+        { "@type": "City", "name": "La Norville" },
+        { "@type": "City", "name": "Marolles-en-Hurepoix" },
+        { "@type": "City", "name": "Égly" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61583428500404",
+        "https://www.instagram.com/lemondedeschiensetdesnacs/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "36",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD : Service catalog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Garderie et pension canine",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Le Monde des Chiens et des NACs",
+        "@id": "https://www.lemondedeschiensetdesnacs.com"
+      },
+      "areaServed": { "@type": "City", "name": "Arpajon" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestations",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Garde journalière" },
+            "price": "15",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Demi-journée" },
+            "price": "12",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Garde NAC" },
+            "price": "10",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Promenade" },
+            "price": "10",
+            "priceCurrency": "EUR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Visite de chat à domicile" },
+            "price": "12",
+            "priceCurrency": "EUR"
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
-    <noscript>Vous devez activer JavaScript pour utiliser cette application.</noscript>
+    <noscript>
+      Vous devez activer JavaScript pour utiliser cette application.
+      Le Monde des Chiens et des NACs — Garderie & pension canine et NAC à Arpajon (91290).
+      Téléphone : 06 50 15 94 11. Email : contact@lemondedeschiensetdesnacs.com.
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

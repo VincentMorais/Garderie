@@ -12,16 +12,16 @@ const Footer: React.FC = () => {
 
         <div className="footer-col footer-brand">
           <div className="footer-logo">
-            <img src="/logo-web.png" alt="Le Monde Des Chiens Et Des Nacs" className="footer-logo-img" />
+            <img src="/logo-web.png" alt="Logo Le Monde des Chiens et des NACs" className="footer-logo-img" loading="lazy" decoding="async" width="180" height="60" />
           </div>
           <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
           <p>Garderie & Pension à Arpajon</p>
           <div className="footer-social">
-            <a href="https://www.instagram.com/lemondedeschiensetdesnacs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FaInstagram />
+            <a href="https://www.instagram.com/lemondedeschiensetdesnacs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram du Monde des Chiens et des NACs (nouvel onglet)">
+              <FaInstagram aria-hidden="true" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61583428500404" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebook />
+            <a href="https://www.facebook.com/profile.php?id=61583428500404" target="_blank" rel="noopener noreferrer" aria-label="Facebook du Monde des Chiens et des NACs (nouvel onglet)">
+              <FaFacebook aria-hidden="true" />
             </a>
           </div>
         </div>
