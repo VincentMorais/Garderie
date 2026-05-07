@@ -140,8 +140,27 @@
 
 .info-cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+/* Responsive : la 3e card (Contact, plus longue) prend tout sur ecran moyen */
+@media (max-width: 900px) {
+  .info-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .info-cards-grid > .info-card:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .info-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-cards-grid > .info-card:nth-child(3) {
+    grid-column: auto;
+  }
 }
 
 .info-card {
@@ -198,6 +217,16 @@
   text-decoration: none;
   transition: color 0.2s;
   line-height: 1.5;
+  /* Permet aux emails et URLs longs de wrap proprement */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* Email plus petit pour eviter la troncature */
+.info-card-body a[href^="mailto:"] {
+  font-size: 0.85rem;
+  letter-spacing: -0.01em;
 }
 
 .info-card-body a:hover {
