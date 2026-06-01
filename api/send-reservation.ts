@@ -5,6 +5,15 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const EMILIE_EMAIL = 'contact@lemondedeschiensetdesnacs.com';
 
+// ─── Coordonnées bancaires pour les arrhes ───────────────────────────
+// ⚠️ À COMPLÉTER avec les vraies coordonnées d'Émilie
+const BANK_DETAILS = {
+  beneficiary: 'Émilie',
+  iban: 'FR76 1027 8061 1400 0205 4530 248',
+  bic: '',                        // optionnel — laisser vide pour un virement SEPA France (l'IBAN suffit)
+};
+const DEPOSIT_DEADLINE_HOURS = 72;
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -15,7 +24,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     dogName, dogBreed, dogCount,
     serviceType, startDate, endDate,
     message, specialNeeds,
+    estimatedTotal, depositAmount,
   } = req.body;
+
+  // Référence de virement à indiquer par le client (nom + date de début)
+  const paymentRef = `${ownerName} ${startDate}`.replace(/\s+/g, '-').toUpperCase().slice(0, 30);
 
   try {
     // Email de notification à Émilie
@@ -23,16 +36,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from: `Garderie <${EMILIE_EMAIL}>`,
       to: EMILIE_EMAIL,
       replyTo: ownerEmail,
-      subject: `🐾 Nouvelle réservation — ${dogName} (${ownerName})`,
-      html: emailToEmilie({ ownerName, ownerEmail, ownerPhone, dogName, dogBreed, dogCount, serviceType, startDate, endDate, message, specialNeeds }),
+      subject: `🐾 Nouvelle réservation (en attente d'arrhes) — ${dogName} (${ownerName})`,
+      html: emailToEmilie({ ownerName, ownerEmail, ownerPhone, dogName, dogBreed, dogCount, serviceType, startDate, endDate, message, specialNeeds, estimatedTotal, depositAmount, paymentRef }),
     });
 
     // Email de confirmation au client
     await resend.emails.send({
       from: `Émilie — Le Monde Des Chiens Et Des Nacs <${EMILIE_EMAIL}>`,
       to: ownerEmail,
-      subject: `Votre demande de réservation a bien été reçue`,
-      html: confirmationToClient({ ownerName, dogName, serviceType, startDate, endDate }),
+      subject: `Réservation à valider — réglez vos arrhes pour bloquer le créneau`,
+      html: confirmationToClient({ ownerName, dogName, serviceType, startDate, endDate, estimatedTotal, depositAmount, paymentRef }),
     });
 
     return res.status(200).json({ success: true });
@@ -77,6 +90,23 @@ function emailToEmilie(d: any): string {
           <td style="padding:6px 0;color:#1f2937;font-weight:600;">${d.startDate}${d.startDate !== d.endDate ? ` → ${d.endDate}` : ''}</td>
         </tr>
 
+        <tr><td colspan="2" style="padding:20px 0 12px;font-weight:700;color:#e8a5ad;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">Arrhes attendues</td></tr>
+        <tr>
+          <td style="padding:6px 0;color:#6b7280;">Montant estimé</td>
+          <td style="padding:6px 0;color:#1f2937;">${d.estimatedTotal ?? '—'}€</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#6b7280;">Arrhes (50%)</td>
+          <td style="padding:6px 0;color:#1f2937;font-weight:700;">${d.depositAmount ?? '—'}€</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 0;color:#6b7280;">Référence virement</td>
+          <td style="padding:6px 0;color:#1f2937;">${d.paymentRef}</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="padding:6px 0;color:#9ca3af;font-size:0.82rem;font-style:italic;">⏳ Dès réception du virement, valide la réservation depuis ton tableau de bord (« Arrhes reçues »).</td>
+        </tr>
+
         <tr><td colspan="2" style="padding:20px 0 12px;font-weight:700;color:#e8a5ad;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">Animal</td></tr>
         <tr>
           <td style="padding:6px 0;color:#6b7280;">Nom</td>
@@ -113,16 +143,43 @@ function confirmationToClient(d: any): string {
   return `
   <div style="font-family:Inter,sans-serif;max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;border:1px solid #fce4e7;">
     <div style="background:linear-gradient(135deg,#f6c1c7,#e8a5ad);padding:28px 32px;">
-      <h1 style="margin:0;color:#fff;font-size:1.4rem;">🐾 Demande bien reçue !</h1>
+      <h1 style="margin:0;color:#fff;font-size:1.4rem;">🐾 Dernière étape : validez votre créneau</h1>
       <p style="margin:6px 0 0;color:rgba(255,255,255,0.9);font-size:0.95rem;">Le Monde Des Chiens Et Des Nacs</p>
     </div>
 
     <div style="padding:28px 32px;">
       <p style="color:#1f2937;font-size:1rem;">Bonjour <strong>${d.ownerName}</strong>,</p>
       <p style="color:#374151;line-height:1.7;">
-        Votre demande de réservation pour <strong>${d.dogName}</strong> a bien été enregistrée.
-        Émilie vous contactera sous <strong>24h</strong> pour confirmer votre créneau.
+        Votre demande de réservation pour <strong>${d.dogName}</strong> a bien été enregistrée. 🎉<br>
+        Pour <strong>bloquer définitivement votre créneau</strong>, il vous reste à régler les arrhes
+        par virement bancaire. Votre place est pré-réservée pendant <strong>${DEPOSIT_DEADLINE_HOURS}h</strong>
+        en attendant la réception du virement.
       </p>
+
+      <div style="background:#fff7f8;border:2px solid #e8a5ad;border-radius:12px;padding:20px;margin:22px 0;">
+        <p style="margin:0 0 12px;font-weight:700;color:#e8a5ad;font-size:1.05rem;">💳 Arrhes à régler : ${d.depositAmount ?? '—'}€</p>
+        <p style="margin:0 0 14px;color:#6b7280;font-size:0.9rem;">Soit 50&nbsp;% du montant estimé de votre séjour (${d.estimatedTotal ?? '—'}€). Montant indicatif — Émilie vous confirmera le détail.</p>
+        <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+          <tr>
+            <td style="padding:6px 0;color:#6b7280;width:38%;">Bénéficiaire</td>
+            <td style="padding:6px 0;color:#1f2937;font-weight:600;">${BANK_DETAILS.beneficiary}</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;color:#6b7280;">IBAN</td>
+            <td style="padding:6px 0;color:#1f2937;font-weight:600;font-family:monospace;">${BANK_DETAILS.iban}</td>
+          </tr>
+          ${BANK_DETAILS.bic ? `
+          <tr>
+            <td style="padding:6px 0;color:#6b7280;">BIC</td>
+            <td style="padding:6px 0;color:#1f2937;font-family:monospace;">${BANK_DETAILS.bic}</td>
+          </tr>` : ''}
+          <tr>
+            <td style="padding:6px 0;color:#6b7280;">Référence à indiquer</td>
+            <td style="padding:6px 0;color:#1f2937;font-weight:700;">${d.paymentRef}</td>
+          </tr>
+        </table>
+        <p style="margin:14px 0 0;color:#9ca3af;font-size:0.82rem;">⚠️ Pensez à bien indiquer la référence ci-dessus dans votre virement pour que nous puissions l'identifier rapidement.</p>
+      </div>
 
       <div style="background:#fef2f2;border:1px solid #fce4e7;border-radius:10px;padding:16px 20px;margin:20px 0;">
         <p style="margin:0 0 8px;font-weight:700;color:#e8a5ad;">Récapitulatif</p>
@@ -132,7 +189,7 @@ function confirmationToClient(d: any): string {
       </div>
 
       <p style="color:#374151;line-height:1.7;">
-        En cas de question, n'hésitez pas à nous contacter directement :
+        Dès réception de votre virement, Émilie confirme votre réservation. En cas de question, n'hésitez pas à nous contacter directement :
       </p>
       <p style="margin:4px 0;color:#374151;">📞 <a href="tel:0650159411" style="color:#e8a5ad;">06 50 15 94 11</a></p>
       <p style="margin:4px 0;color:#374151;">✉️ <a href="mailto:contact@lemondedeschiensetdesnacs.com" style="color:#e8a5ad;">contact@lemondedeschiensetdesnacs.com</a></p>

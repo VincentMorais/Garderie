@@ -76,6 +76,7 @@
   border-top: 4px solid #ddd;
 }
 
+.stat-card.awaiting_deposit { border-top-color: #d97706; }
 .stat-card.pending { border-top-color: #f59e0b; }
 .stat-card.confirmed { border-top-color: #10b981; }
 .stat-card.cancelled { border-top-color: #ef4444; }
@@ -170,6 +171,7 @@
   box-shadow: 0 6px 24px rgba(0,0,0,0.12);
 }
 
+.reservation-card.status-awaiting_deposit { border-left-color: #d97706; }
 .reservation-card.status-pending { border-left-color: #f59e0b; }
 .reservation-card.status-confirmed { border-left-color: #10b981; }
 .reservation-card.status-cancelled { border-left-color: #ef4444; }
@@ -204,6 +206,7 @@
   letter-spacing: 0.05em;
 }
 
+.status-badge.awaiting_deposit { background: #fde9d3; color: #9a3412; }
 .status-badge.pending { background: #fef3c7; color: #92400e; }
 .status-badge.confirmed { background: #d1fae5; color: #065f46; }
 .status-badge.cancelled { background: #fee2e2; color: #991b1b; }

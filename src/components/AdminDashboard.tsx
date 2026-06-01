@@ -13,12 +13,13 @@ const SERVICE_LABELS: Record<string, string> = {
 };
 
 const STATUS_LABELS: Record<string, string> = {
+  awaiting_deposit: 'En attente d\'arrhes',
   pending: 'En attente',
   confirmed: 'Confirmée',
   cancelled: 'Annulée',
 };
 
-type FilterType = 'all' | 'pending' | 'confirmed' | 'cancelled';
+type FilterType = 'all' | 'awaiting_deposit' | 'pending' | 'confirmed' | 'cancelled';
 
 const AdminDashboard: React.FC = () => {
   const [reservations, setReservations] = useState<Reservation[]>([]);
@@ -88,6 +89,7 @@ const AdminDashboard: React.FC = () => {
 
   const counts = {
     all: reservations.length,
+    awaiting_deposit: reservations.filter(r => r.status === 'awaiting_deposit').length,
     pending: reservations.filter(r => r.status === 'pending').length,
     confirmed: reservations.filter(r => r.status === 'confirmed').length,
     cancelled: reservations.filter(r => r.status === 'cancelled').length,
@@ -125,6 +127,10 @@ const AdminDashboard: React.FC = () => {
             <span className="stat-number">{counts.all}</span>
             <span className="stat-label">Total</span>
           </div>
+          <div className="stat-card awaiting_deposit">
+            <span className="stat-number">{counts.awaiting_deposit}</span>
+            <span className="stat-label">En attente d'arrhes</span>
+          </div>
           <div className="stat-card pending">
             <span className="stat-number">{counts.pending}</span>
             <span className="stat-label">En attente</span>
@@ -140,7 +146,7 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <div className="admin-filters">
-          {(['all', 'pending', 'confirmed', 'cancelled'] as FilterType[]).map(f => (
+          {(['all', 'awaiting_deposit', 'pending', 'confirmed', 'cancelled'] as FilterType[]).map(f => (
             <button
               key={f}
               className={`filter-btn ${filter === f ? 'active' : ''} ${f}`}
@@ -209,6 +215,25 @@ const AdminDashboard: React.FC = () => {
                     </div>
                   )}
                 </div>
+
+                {r.status === 'awaiting_deposit' && (
+                  <div className="res-actions">
+                    <button
+                      className="action-btn confirm"
+                      disabled={actionLoading?.id === r.id && actionLoading?.status === 'confirmed'}
+                      onClick={() => updateStatus(r.id!, 'confirmed')}
+                    >
+                      {actionLoading?.id === r.id && actionLoading?.status === 'confirmed' ? '...' : '✓ Arrhes reçues → Confirmer'}
+                    </button>
+                    <button
+                      className="action-btn decline"
+                      disabled={actionLoading?.id === r.id && actionLoading?.status === 'cancelled'}
+                      onClick={() => updateStatus(r.id!, 'cancelled')}
+                    >
+                      {actionLoading?.id === r.id && actionLoading?.status === 'cancelled' ? '...' : '✗ Annuler (pas de virement)'}
+                    </button>
+                  </div>
+                )}
 
                 {r.status === 'pending' && (
                   <div className="res-actions">

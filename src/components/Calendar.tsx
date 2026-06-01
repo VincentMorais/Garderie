@@ -11,15 +11,36 @@ import './Calendar.css';
 
 const MAX_DOGS = 5;
 
+// Pourcentage d'arrhes demandé pour valider la réservation
+const DEPOSIT_RATE = 0.5; // 50 %
+
+// unit  = prix numérique (€)
+// perDay = true → le tarif est multiplié par le nombre de jours de la période
 const SERVICE_OPTIONS = [
-  { value: 'journee',       label: 'Garde journalière',       price: '15€/jour' },
-  { value: 'demi_journee',  label: 'Demi-journée (jusqu\'à 5h)', price: '12€' },
-  { value: 'promenade',     label: 'Promenade des chiens',    price: '13€' },
-  { value: 'garde_domicile_nac', label: 'Garde à domicile NAC', price: '10€/jour' },
-  { value: 'visite_domicile', label: 'Visite à domicile (chat ou NAC)', price: '12€' },
-  { value: 'adaptation',    label: 'Adaptation',              price: '15€' },
-  { value: 'toilettage',    label: 'Toilettage',              price: '30€' },
+  { value: 'journee',            label: 'Garde journalière',              price: '15€/jour', unit: 15, perDay: true },
+  { value: 'demi_journee',       label: 'Demi-journée (jusqu\'à 5h)',     price: '12€',      unit: 12, perDay: false },
+  { value: 'promenade',          label: 'Promenade des chiens',           price: '13€',      unit: 13, perDay: false },
+  { value: 'garde_domicile_nac', label: 'Garde à domicile NAC',           price: '10€/jour', unit: 10, perDay: true },
+  { value: 'visite_domicile',    label: 'Visite à domicile (chat ou NAC)', price: '12€',     unit: 12, perDay: false },
+  { value: 'adaptation',         label: 'Adaptation',                     price: '15€',      unit: 15, perDay: false },
+  { value: 'toilettage',         label: 'Toilettage',                     price: '30€',      unit: 30, perDay: false },
 ];
+
+// Nombre de jours inclus dans la période (bornes incluses)
+const daysBetween = (start: Date, end: Date): number => {
+  const ms = new Date(toKey(end)).getTime() - new Date(toKey(start)).getTime();
+  return Math.max(1, Math.round(ms / (24 * 60 * 60 * 1000)) + 1);
+};
+
+// Estimation du prix total et des arrhes (montant indicatif)
+const estimatePrice = (serviceValue: string, range: [Date, Date] | null, dogCount: number) => {
+  const svc = SERVICE_OPTIONS.find(s => s.value === serviceValue);
+  if (!svc || !range) return { total: 0, deposit: 0 };
+  const nbDays = svc.perDay ? daysBetween(range[0], range[1]) : 1;
+  const total = svc.unit * nbDays * dogCount;
+  const deposit = Math.round(total * DEPOSIT_RATE);
+  return { total, deposit };
+};
 
 const toKey = (d: Date) => d.toISOString().split('T')[0];
 const formatDate = (d: Date) =>
@@ -162,13 +183,14 @@ const BookingCalendar: React.FC = () => {
       dog_age: form.dogAge || null,
       message: form.message || null,
       special_needs: form.specialNeeds || null,
-      status: 'pending',
+      status: 'awaiting_deposit',
     }]);
 
     if (dbErr) { setError('Erreur lors de la réservation. Veuillez réessayer.'); setSubmitting(false); return; }
 
     try {
       const serviceLabel = SERVICE_OPTIONS.find(s => s.value === form.serviceType)?.label || form.serviceType;
+      const { total, deposit } = estimatePrice(form.serviceType, selectedRange, form.dogCount);
       await fetch('/api/send-reservation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -184,6 +206,8 @@ const BookingCalendar: React.FC = () => {
           endDate: toKey(start) === toKey(end) ? formatDate(start) : formatDate(end),
           message: form.message || '',
           specialNeeds: form.specialNeeds || '',
+          estimatedTotal: total,
+          depositAmount: deposit,
         }),
       });
     } catch { /* email failure non critique */ }
@@ -390,9 +414,23 @@ const BookingCalendar: React.FC = () => {
               <textarea value={form.message} onChange={e => updateForm('message', e.target.value)} rows={3} placeholder="Questions, informations utiles..." />
             </div>
 
-            <p className="form-notice">
-              <FaInfoCircle /> Votre réservation sera enregistrée et confirmée par Émilie sous 24h.
-            </p>
+            {(() => {
+              const { total, deposit } = estimatePrice(form.serviceType, selectedRange, form.dogCount);
+              return (
+                <div className="deposit-box">
+                  <p className="deposit-title"><FaInfoCircle /> Validation de la réservation par arrhes</p>
+                  <p className="deposit-text">
+                    Pour bloquer définitivement votre créneau, des <strong>arrhes de {deposit}€</strong>{' '}
+                    (50&nbsp;% du montant estimé à {total}€) sont demandées par <strong>virement bancaire</strong>.
+                    Vous recevrez l'IBAN et la marche à suivre par email juste après l'envoi.
+                  </p>
+                  <p className="deposit-note">
+                    Votre créneau est pré-réservé <strong>72h</strong> en attendant la réception du virement.
+                    Le montant est une estimation&nbsp;; Émilie vous confirmera le détail.
+                  </p>
+                </div>
+              );
+            })()}
 
             {error && <div className="form-error">{error}</div>}
 
@@ -417,15 +455,31 @@ const BookingCalendar: React.FC = () => {
       <div className="success-icon-wrap"><FaCheckCircle /></div>
       <h3>Merci {form.firstName || ''}, votre demande est bien arrivée !</h3>
       <p>
-        Émilie vous contactera <strong>sous 24h</strong> au {form.phone || 'numéro indiqué'} pour
-        confirmer votre réservation.
+        Pour <strong>valider et bloquer votre créneau</strong>, il vous reste à régler les arrhes
+        par virement. Toutes les informations (montant, IBAN, référence) vous ont été
+        <strong> envoyées par email</strong>.
         <br />
-        Pas de réponse ? Joignez-nous au{' '}
+        Votre créneau est pré-réservé <strong>72h</strong> en attendant la réception du virement.
+        <br />
+        Une question ? Joignez Émilie au{' '}
         <a href="tel:0650159411"><strong>06 50 15 94 11</strong></a> ou par email à{' '}
         <a href="mailto:contact@lemondedeschiensetdesnacs.com">
           contact@lemondedeschiensetdesnacs.com
         </a>.
       </p>
+
+      {selectedRange && (() => {
+        const { total, deposit } = estimatePrice(form.serviceType, selectedRange, form.dogCount);
+        return (
+          <div className="deposit-box">
+            <p className="deposit-title"><FaInfoCircle /> Arrhes à régler : {deposit}€</p>
+            <p className="deposit-text">
+              Soit 50&nbsp;% du montant estimé à {total}€, par virement bancaire.
+              Pensez à indiquer votre nom en référence du virement.
+            </p>
+          </div>
+        );
+      })()}
 
       {selectedRange && (
         <div className="success-recap">
