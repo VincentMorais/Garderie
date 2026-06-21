@@ -7,6 +7,7 @@ import {
   FaCalendarAlt,
   FaEnvelope,
   FaImages,
+  FaShoppingBag,
   FaBars,
   FaTimes
 } from 'react-icons/fa';
@@ -50,6 +51,7 @@ const Navbar: React.FC = () => {
     { path: '/', label: 'Accueil', icon: FaHome },
     { path: '/about', label: 'À propos', icon: FaInfoCircle },
     { path: '/gallery', label: 'Galerie', icon: FaImages },
+    { path: '/boutique', label: 'Boutique', icon: FaShoppingBag },
     { path: '/calendar', label: 'Planning', icon: FaCalendarAlt },
     { path: '/contact', label: 'Contact', icon: FaEnvelope },
   ];

@@ -258,7 +258,7 @@ const About: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header">
-              <h3>Documents & Certifications</h3>
+              <h3>Certifications et documentation</h3>
               <button onClick={closeDiplomaModal} className="close-button">
                 <FaTimes />
               </button>
@@ -280,6 +280,20 @@ const About: React.FC = () => {
                     badge: 'official',
                     badgeLabel: 'Officiel',
                     description: 'Attestation officielle de formation toiletteur.'
+                  },
+                  {
+                    title: 'Certificat de fin de formation',
+                    src: '/CERTIFICAT%20DE%20FIN%20DE%20FORMATION%201CA.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: 'Certificat de fin de formation.'
+                  },
+                  {
+                    title: 'Attestation individuelle de fin de formation',
+                    src: '/Attestation_individuelle_fin_formation_163305-0.pdf',
+                    badge: 'official',
+                    badgeLabel: 'Officiel',
+                    description: 'Attestation individuelle de fin de formation.'
                   },
                   {
                     title: "Attestation d'assurance Hiscox",

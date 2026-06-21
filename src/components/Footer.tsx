@@ -32,6 +32,7 @@ const Footer: React.FC = () => {
             <Link to="/">Accueil</Link>
             <Link to="/about">À propos</Link>
             <Link to="/gallery">Galerie</Link>
+            <Link to="/boutique">Boutique</Link>
             <Link to="/calendar">Réservation</Link>
             <Link to="/contact">Contact</Link>
           </nav>

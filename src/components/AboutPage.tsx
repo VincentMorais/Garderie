@@ -286,7 +286,6 @@ const AboutPage: React.FC = () => {
                   <span>🐶 Chiens</span>
                   <span>🐱 Chats</span>
                   <span>🐰 Lapins</span>
-                  <span>🐦 Oiseaux &amp; perruches</span>
                   <span>🐹 Rongeurs</span>
                   <span>🐴 Chevaux</span>
                 </div>

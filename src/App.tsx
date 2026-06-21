@@ -16,6 +16,7 @@ import LandingArea from './components/LandingArea';
 // (~ -300 a 500 Ko gzip sur le bundle initial)
 const BookingCalendar = lazy(() => import('./components/CalendarPage'));
 const GalleryPage = lazy(() => import('./components/GalleryPage'));
+const BoutiquePage = lazy(() => import('./components/BoutiquePage'));
 const AdminLogin = lazy(() => import('./components/AdminLogin'));
 const AdminDashboard = lazy(() => import('./components/AdminDashboard'));
 
@@ -75,6 +76,7 @@ const PublicLayout = () => (
           <Route path="/calendar" element={<BookingCalendar />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/boutique" element={<BoutiquePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
           <Route path="/confidentialite" element={<Confidentialite />} />
