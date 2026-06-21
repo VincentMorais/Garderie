@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase, Reservation } from '../lib/supabase';
+import AdminGallery from './AdminGallery';
 import './AdminDashboard.css';
 
 const SERVICE_LABELS: Record<string, string> = {
@@ -26,6 +27,7 @@ const AdminDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [authChecked, setAuthChecked] = useState(false);
   const [filter, setFilter] = useState<FilterType>('all');
+  const [view, setView] = useState<'reservations' | 'gallery'>('reservations');
   const [actionLoading, setActionLoading] = useState<{ id: string; status: string } | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -122,6 +124,25 @@ const AdminDashboard: React.FC = () => {
       </header>
 
       <div className="admin-content">
+        <div className="admin-tabs">
+          <button
+            className={`admin-tab ${view === 'reservations' ? 'active' : ''}`}
+            onClick={() => setView('reservations')}
+          >
+            Réservations
+          </button>
+          <button
+            className={`admin-tab ${view === 'gallery' ? 'active' : ''}`}
+            onClick={() => setView('gallery')}
+          >
+            Galerie
+          </button>
+        </div>
+
+        {view === 'gallery' ? (
+          <AdminGallery />
+        ) : (
+        <>
         <div className="admin-stats">
           <div className="stat-card">
             <span className="stat-number">{counts.all}</span>
@@ -280,6 +301,8 @@ const AdminDashboard: React.FC = () => {
               </div>
             ))}
           </div>
+        )}
+        </>
         )}
       </div>
     </div>

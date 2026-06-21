@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaDog, FaCat, FaPaw, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './GalleryPage.css';
 import SEO from './SEO';
+import { supabase, GalleryImage } from '../lib/supabase';
 
 import heroImg from '../assets/accueilrose.webp';
 
@@ -190,9 +191,38 @@ const CATEGORIES: { id: Category; label: string; icon: React.ComponentType; phot
 const GalleryPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('chiens');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [dynamicPhotos, setDynamicPhotos] = useState<Record<Category, Photo[]>>({
+    chiens: [],
+    chats: [],
+    nac: [],
+  });
 
-  const currentCategory = CATEGORIES.find(c => c.id === activeCategory)!;
-  const photos = currentCategory.photos;
+  useEffect(() => {
+    let active = true;
+    supabase
+      .from('gallery_images')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!active || error || !data) return;
+        const grouped: Record<Category, Photo[]> = { chiens: [], chats: [], nac: [] };
+        (data as GalleryImage[]).forEach(img => {
+          if (grouped[img.category]) {
+            grouped[img.category].push({ src: img.url, name: img.name });
+          }
+        });
+        setDynamicPhotos(grouped);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const photoCount = (cat: Category) =>
+    CATEGORIES.find(c => c.id === cat)!.photos.length + dynamicPhotos[cat].length;
+
+  // Les photos ajoutées depuis l'admin s'affichent en premier (plus récentes).
+  const photos = [...dynamicPhotos[activeCategory], ...CATEGORIES.find(c => c.id === activeCategory)!.photos];
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -255,7 +285,7 @@ const GalleryPage: React.FC = () => {
                 >
                   <Icon className="tab-icon" />
                   <span>{cat.label}</span>
-                  <span className="tab-count">{cat.photos.length}</span>
+                  <span className="tab-count">{photoCount(cat.id)}</span>
                 </button>
               );
             })}

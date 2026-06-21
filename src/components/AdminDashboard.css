@@ -59,6 +59,36 @@
   padding: 32px 20px;
 }
 
+/* Tabs */
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-tab {
+  padding: 10px 22px;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-tab:hover {
+  color: #1f2937;
+}
+
+.admin-tab.active {
+  color: #e8a5ad;
+  border-bottom-color: #e8a5ad;
+}
+
 /* Stats */
 .admin-stats {
   display: grid;
