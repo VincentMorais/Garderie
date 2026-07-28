@@ -24,3 +24,8 @@ yarn-error.log*
 
 # Claude Code
 .claude/
+
+# Dépôt public : ne jamais y publier le RIB ni les documents source de la cliente.
+# Le RIB doit être fourni au déploiement autrement (voir api/assets/README.md).
+api/assets/*.pdf
+public/*.docx
