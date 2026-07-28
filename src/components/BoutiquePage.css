@@ -69,6 +69,54 @@
   background: linear-gradient(180deg, #ffffff 0%, #fef2f2 100%);
 }
 
+/* ─── Filtres par catégorie ──────────────────────────── */
+.boutique-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.boutique-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid #f3d4d8;
+  border-radius: 999px;
+  background: #fff;
+  color: #6b7280;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.boutique-filter:hover {
+  border-color: #e8a5ad;
+  color: #1f2937;
+}
+
+.boutique-filter.active {
+  background: linear-gradient(135deg, #f6c1c7, #e8a5ad);
+  border-color: transparent;
+  color: #fff;
+}
+
+.boutique-filter-count {
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.07);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.boutique-filter.active .boutique-filter-count {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 /* ─── Grille de produits ─────────────────────────────── */
 .boutique-grid {
   display: grid;
@@ -102,6 +150,19 @@
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+/* Produits sans photo : icône de la catégorie sur fond dégradé doux. */
+.product-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fdf0f2, #fbe3e7);
+  color: #e8a5ad;
+  font-size: 3.5rem;
 }
 
 .product-body {
@@ -191,6 +252,20 @@
 
   .product-description {
     font-size: 0.85rem;
+  }
+
+  .boutique-filters {
+    gap: 0.45rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .boutique-filter {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .product-image-placeholder {
+    font-size: 2.25rem;
   }
 }
 

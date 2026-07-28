@@ -18,9 +18,9 @@ const StickyMobileBar: React.FC = () => {
       aria-label="Actions rapides"
     >
       <a
-        href="tel:0650159411"
+        href="tel:0756804159"
         className="sticky-mobile-bar__btn sticky-mobile-bar__btn--call"
-        aria-label="Appeler la garderie au 06 50 15 94 11"
+        aria-label="Appeler la garderie au 07 56 80 41 59"
       >
         <FaPhone aria-hidden="true" />
         <span>Appeler</span>

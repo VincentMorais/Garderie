@@ -11,9 +11,12 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaUser,
-  FaComments
+  FaComments,
+  FaInstagram,
+  FaFacebook
 } from 'react-icons/fa';
 import contactImage from '../assets/natsu.webp';
+import { SOCIAL } from '../config/site';
 import './Contact.css';
 import SEO from './SEO';
 
@@ -28,6 +31,7 @@ const ContactPage: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,7 +44,8 @@ const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+    setErrorMessage(null);
+
     try {
       const res = await fetch('/api/send-contact', {
         method: 'POST',
@@ -49,9 +54,10 @@ const ContactPage: React.FC = () => {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        console.error('API error:', data);
-        throw new Error(data.error || 'send failed');
+        // L'API renvoie un motif exploitable (champ invalide, trop de
+        // messages envoyés) : on l'affiche plutôt qu'un « erreur » opaque.
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Erreur lors de l'envoi. Veuillez réessayer.");
       }
 
       setSubmitStatus('success');
@@ -60,7 +66,7 @@ const ContactPage: React.FC = () => {
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       }, 3000);
     } catch (error) {
-      console.error('Erreur:', error);
+      setErrorMessage(error instanceof Error ? error.message : "Erreur lors de l'envoi. Veuillez réessayer.");
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -85,8 +91,8 @@ const ContactPage: React.FC = () => {
     {
       icon: FaPhone,
       title: "Téléphone",
-      content: "06 50 15 94 11",
-      link: "tel:0650159411"
+      content: "07 56 80 41 59",
+      link: "tel:0756804159"
     },
     {
       icon: FaEnvelope,
@@ -120,7 +126,7 @@ const ContactPage: React.FC = () => {
     <div className="contact-page">
       <SEO
         title="Contact — Garderie chien Arpajon"
-        description="Contactez Émilie au 06 50 15 94 11 ou par email. Garderie & pension à Arpajon (91290), 5 Impasse du Tacot."
+        description="Contactez Émilie au 07 56 80 41 59 ou par email. Garderie & pension à Arpajon (91290), 5 Impasse du Tacot."
         path="/contact"
       />
       <section className="contact-hero">
@@ -192,6 +198,39 @@ const ContactPage: React.FC = () => {
                 </motion.div>
               );
             })}
+          </motion.div>
+
+          <motion.div
+            className="contact-social"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3>Suivez-nous</h3>
+            <p>Les photos et les nouvelles de nos pensionnaires au quotidien</p>
+            <div className="contact-social-links">
+              <a
+                href={SOCIAL.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social-link instagram"
+                aria-label="Instagram du Monde des Chiens et des NACs (nouvel onglet)"
+              >
+                <FaInstagram aria-hidden="true" />
+                <span>Instagram</span>
+              </a>
+              <a
+                href={SOCIAL.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-social-link facebook"
+                aria-label="Facebook du Monde des Chiens et des NACs (nouvel onglet)"
+              >
+                <FaFacebook aria-hidden="true" />
+                <span>Facebook</span>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -389,7 +428,7 @@ const ContactPage: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                 >
                   <FaTimesCircle />
-                  <span>Erreur lors de l'envoi. Veuillez réessayer.</span>
+                  <span>{errorMessage || "Erreur lors de l'envoi. Veuillez réessayer."}</span>
                 </motion.div>
               )}
             </form>

@@ -116,7 +116,7 @@ const CalendarPage: React.FC = () => {
               </div>
               <div className="info-card-body">
                 <strong>Contact</strong>
-                <a href="tel:0650159411">06 50 15 94 11</a>
+                <a href="tel:0756804159">07 56 80 41 59</a>
                 <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a>
               </div>
             </div>

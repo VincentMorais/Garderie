@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { SOCIAL } from '../config/site';
 import './Footer.css';
 
 const Footer: React.FC = () => {
@@ -17,10 +18,10 @@ const Footer: React.FC = () => {
           <h3>Le Monde Des Chiens<br />Et Des Nacs</h3>
           <p>Garderie & Pension à Arpajon</p>
           <div className="footer-social">
-            <a href="https://www.instagram.com/lemondedeschiensetdesnacs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram du Monde des Chiens et des NACs (nouvel onglet)">
+            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram du Monde des Chiens et des NACs (nouvel onglet)">
               <FaInstagram aria-hidden="true" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61583428500404" target="_blank" rel="noopener noreferrer" aria-label="Facebook du Monde des Chiens et des NACs (nouvel onglet)">
+            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook du Monde des Chiens et des NACs (nouvel onglet)">
               <FaFacebook aria-hidden="true" />
             </a>
           </div>
@@ -47,7 +48,7 @@ const Footer: React.FC = () => {
             </li>
             <li>
               <FaPhone className="fc-icon" />
-              <a href="tel:0650159411">06 50 15 94 11</a>
+              <a href="tel:0756804159">07 56 80 41 59</a>
             </li>
             <li>
               <FaEnvelope className="fc-icon" />

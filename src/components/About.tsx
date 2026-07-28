@@ -13,7 +13,8 @@ import {
   FaClock,
   FaTimes,
   FaEye,
-  FaFilePdf
+  FaFilePdf,
+  FaFileImage
 } from 'react-icons/fa';
 // heroDogs sert via /hero-accueil.webp (public/) pour matcher le preload
 import planningImg from '../assets/calendrier.webp';
@@ -23,8 +24,124 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './About.css';
 import SEO from './SEO';
 
+interface DocEntry {
+  title: string;
+  src: string;
+  badgeLabel: string;
+  badge: 'official' | 'formation';
+  description?: string;
+  /** Le document est un scan image (JPEG/PNG) et non un PDF : icône adaptée et
+   *  pas de paramètres de visionneuse PDF dans le lien. */
+  image?: boolean;
+  /** Fichier pas encore déposé dans /public : on affiche « Bientôt disponible »
+   *  plutôt qu'un lien mort. Retirer la ligne une fois le fichier ajouté. */
+  pending?: boolean;
+}
+
+// Onglet « Certifications » : les qualifications d'Émilie.
+const CERTIFICATIONS: DocEntry[] = [
+  {
+    title: 'Diplôme pet sitter',
+    src: '/Diplome-paysage.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Diplôme pet sitter attestant des qualifications professionnelles.',
+  },
+  {
+    title: 'Attestation ASV',
+    src: '/Attestation-ASV.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Attestation de certification ASV (Auxiliaire Spécialisé Vétérinaire).',
+  },
+  {
+    title: 'Attestation de réussite',
+    src: '/Attestation-de-reussite.jpg',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Attestation de réussite à la formation.',
+    image: true,
+  },
+  {
+    title: 'Formation toiletteur',
+    src: '/Attestation%20fin%20de%20formation.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Attestation officielle de formation toiletteur.',
+  },
+  {
+    title: 'Certificat de fin de formation',
+    src: '/CERTIFICAT%20DE%20FIN%20DE%20FORMATION%201CA.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Certificat de fin de formation.',
+  },
+  {
+    title: 'Attestation individuelle de fin de formation',
+    src: '/Attestation_individuelle_fin_formation_163305-0.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Attestation individuelle de fin de formation.',
+  },
+  {
+    title: 'Formation 1er secours canin et félin',
+    src: '/Attestation.pdf',
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: 'Attestation de formation aux premiers secours canins et félins.',
+  },
+  {
+    title: "Attestation d'assurance Hiscox",
+    src: "/Hiscox%20-%20Attestation%20d'assurance.pdf",
+    badge: 'official',
+    badgeLabel: 'Officiel',
+    description: "Attestation d'assurance responsabilité civile professionnelle (renouvellement).",
+  },
+];
+
+// Onglet « Documents à fournir » : ce que le propriétaire remplit et rapporte.
+const CLIENT_DOCUMENTS: DocEntry[] = [
+  {
+    title: 'Contrat de garde',
+    src: '/Contrat_Garde.pdf',
+    badge: 'formation',
+    badgeLabel: 'À signer',
+    description: 'Contrat à lire et à signer avant le début de la garde.',
+  },
+  {
+    title: 'Document de consentement',
+    src: '/Consentement.pdf',
+    badge: 'formation',
+    badgeLabel: 'À signer',
+    description: "Autorisation de soins et consentement du propriétaire.",
+    pending: true,
+  },
+  {
+    title: 'Attestation de bonne santé',
+    src: '/Attestation%20de%20sant%C3%A9.pdf',
+    badge: 'formation',
+    badgeLabel: 'À remplir',
+    description: "Déclaration de l'état de santé de l'animal.",
+  },
+  {
+    title: 'Attestation de non-abandon',
+    src: '/Attestation%20de%20non%20abandon.pdf',
+    badge: 'formation',
+    badgeLabel: 'À remplir',
+    description: "Engagement du propriétaire à récupérer son animal.",
+  },
+  {
+    title: 'Règlement sanitaire',
+    src: '/reglement%20sanitaire.pdf',
+    badge: 'official',
+    badgeLabel: 'À lire',
+    description: "Règles d'hygiène et de vaccination appliquées à la garderie.",
+  },
+];
+
 const About: React.FC = () => {
   const [isDiplomaModalOpen, setIsDiplomaModalOpen] = useState(false);
+  const [docsTab, setDocsTab] = useState<'certifications' | 'documents'>('certifications');
 
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
@@ -197,7 +314,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="info-content">
                   <h3>CERTIFICATIONS</h3>
-                  <p>Découvrez nos qualifications et documents officiels</p>
+                  <p>Nos qualifications et les documents à fournir avant la garde</p>
                   <span className="info-cta">Voir les documents →</span>
                 </div>
               </button>
@@ -258,92 +375,53 @@ const About: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-header">
-              <h3>Certifications et documentation</h3>
+              <h3>Certifications &amp; documents</h3>
               <button onClick={closeDiplomaModal} className="close-button">
                 <FaTimes />
               </button>
             </div>
-            <div className="docs-modal-content">
+            <div className="docs-tabs" role="tablist" aria-label="Type de document">
+              <button
+                type="button"
+                role="tab"
+                id="docs-tab-certifications"
+                aria-selected={docsTab === 'certifications'}
+                aria-controls="docs-panel-certifications"
+                className={`docs-tab ${docsTab === 'certifications' ? 'active' : ''}`}
+                onClick={() => setDocsTab('certifications')}
+              >
+                Certifications
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="docs-tab-documents"
+                aria-selected={docsTab === 'documents'}
+                aria-controls="docs-panel-documents"
+                className={`docs-tab ${docsTab === 'documents' ? 'active' : ''}`}
+                onClick={() => setDocsTab('documents')}
+              >
+                Documents à fournir
+              </button>
+            </div>
+
+            <div
+              className="docs-modal-content"
+              role="tabpanel"
+              id={`docs-panel-${docsTab}`}
+              aria-labelledby={`docs-tab-${docsTab}`}
+            >
+              <p className="docs-intro">
+                {docsTab === 'certifications'
+                  ? "Les diplômes, formations et attestations d'assurance d'Émilie."
+                  : "À télécharger, remplir et rapporter avant le début de la garde. Le carnet de vaccination à jour et le passeport de l'animal sont également obligatoires."}
+              </p>
 
               <div className="docs-list">
-                {[
-                  {
-                    title: 'Diplôme pet sitter',
-                    src: '/Diplome-paysage.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: 'Diplôme pet sitter attestant des qualifications professionnelles.'
-                  },
-                  {
-                    title: 'Formation toiletteur',
-                    src: '/Attestation%20fin%20de%20formation.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: 'Attestation officielle de formation toiletteur.'
-                  },
-                  {
-                    title: 'Certificat de fin de formation',
-                    src: '/CERTIFICAT%20DE%20FIN%20DE%20FORMATION%201CA.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: 'Certificat de fin de formation.'
-                  },
-                  {
-                    title: 'Attestation individuelle de fin de formation',
-                    src: '/Attestation_individuelle_fin_formation_163305-0.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: 'Attestation individuelle de fin de formation.'
-                  },
-                  {
-                    title: "Attestation d'assurance Hiscox",
-                    src: "/Hiscox%20-%20Attestation%20d'assurance.pdf",
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: "Attestation d'assurance responsabilité civile professionnelle (renouvellement)."
-                  },
-                  {
-                    title: 'Contrat de garde',
-                    src: '/Contrat_Garde.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                  },
-                  {
-                    title: 'Règlement sanitaire',
-                    src: '/reglement%20sanitaire.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                  },
-                  {
-                    title: 'Attestation de non-abandon',
-                    src: '/Attestation%20de%20non%20abandon.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                  },
-                  {
-                    title: 'Attestation de bonne santé',
-                    src: '/Attestation%20de%20sant%C3%A9.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                  },
-                  {
-                    title: 'Attestation ASV',
-                    src: '/Attestation-ASV.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: "Attestation de certification ASV (Auxiliaire Spécialisé Vétérinaire).",
-                  },
-                  {
-                    title: 'Formation 1er secours canin et félin',
-                    src: '/Attestation.pdf',
-                    badge: 'official',
-                    badgeLabel: 'Officiel',
-                    description: "Attestation de formation aux premiers secours canins et félins.",
-                  },
-                ].map((doc) => (
+                {(docsTab === 'certifications' ? CERTIFICATIONS : CLIENT_DOCUMENTS).map((doc) => (
                   <div key={doc.title} className="doc-row">
                     <div className="doc-row-icon">
-                      <FaFilePdf />
+                      {doc.image ? <FaFileImage /> : <FaFilePdf />}
                     </div>
                     <div className="doc-row-info">
                       <div className="doc-row-top">
@@ -353,14 +431,18 @@ const About: React.FC = () => {
                       {doc.description && <p className="doc-row-desc">{doc.description}</p>}
                     </div>
                     <div className="doc-row-actions">
-                      <a
-                        href={`${doc.src}#toolbar=0&navpanes=0&scrollbar=0`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="doc-btn doc-btn--view"
-                      >
-                        <FaEye /> <span>Voir</span>
-                      </a>
+                      {doc.pending ? (
+                        <span className="doc-btn doc-btn--pending">Bientôt disponible</span>
+                      ) : (
+                        <a
+                          href={doc.image ? doc.src : `${doc.src}#toolbar=0&navpanes=0&scrollbar=0`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="doc-btn doc-btn--view"
+                        >
+                          <FaEye /> <span>Voir</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 ))}

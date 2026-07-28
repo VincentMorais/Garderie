@@ -21,7 +21,7 @@ const Confidentialite: React.FC = () => {
           <p><strong>Émilie Cazes</strong> — Le Monde Des Chiens Et Des Nacs</p>
           <p>5 Impasse du Tacot, 91290 Arpajon</p>
           <p>Email : <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a></p>
-          <p>Téléphone : <a href="tel:0650159411">06 50 15 94 11</a></p>
+          <p>Téléphone : <a href="tel:0756804159">07 56 80 41 59</a></p>
         </div>
       </section>
 

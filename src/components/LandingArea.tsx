@@ -40,7 +40,7 @@ const LandingArea: React.FC<LandingAreaProps> = ({
               postalCode: '91290',
               addressCountry: 'FR',
             },
-            telephone: '+33-6-50-15-94-11',
+            telephone: '+33-7-56-80-41-59',
             url: 'https://www.lemondedeschiensetdesnacs.com',
           },
           areaServed: {
@@ -175,11 +175,11 @@ const LandingArea: React.FC<LandingAreaProps> = ({
                   <FaCalendarAlt aria-hidden="true" /> Voir le planning
                 </Link>
                 <a
-                  href="tel:0650159411"
+                  href="tel:0756804159"
                   className="landing-btn landing-btn--secondary"
-                  aria-label="Appeler Émilie au 06 50 15 94 11"
+                  aria-label="Appeler Émilie au 07 56 80 41 59"
                 >
-                  <FaPhone aria-hidden="true" /> 06 50 15 94 11
+                  <FaPhone aria-hidden="true" /> 07 56 80 41 59
                 </a>
                 <div className="landing-cta-info">
                   <FaMapMarkerAlt aria-hidden="true" />

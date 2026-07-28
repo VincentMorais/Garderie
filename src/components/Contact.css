@@ -632,3 +632,68 @@
 .form-group--floating textarea:invalid:not(:placeholder-shown) + label {
   color: #dc2626;
 }
+
+/* ── Réseaux sociaux ─────────────────────────────────────────── */
+.contact-social {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+.contact-social h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.contact-social > p {
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.contact-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 50px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: var(--shadow-light);
+}
+
+.contact-social-link svg {
+  font-size: 1.25rem;
+}
+
+.contact-social-link.instagram {
+  background: linear-gradient(135deg, #f09433, #dc2743 45%, #bc1888);
+}
+
+.contact-social-link.facebook {
+  background: #1877f2;
+}
+
+.contact-social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+}
+
+@media (max-width: 480px) {
+  .contact-social-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-social-link {
+    justify-content: center;
+  }
+}

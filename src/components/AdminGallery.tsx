@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { supabase, GALLERY_BUCKET, GalleryImage, GalleryCategory } from '../lib/supabase';
+import { compressImage, isUnreadableImageError } from '../lib/compressImage';
 import './AdminGallery.css';
 
 const CATEGORIES: { id: GalleryCategory; label: string }[] = [
@@ -8,7 +9,10 @@ const CATEGORIES: { id: GalleryCategory; label: string }[] = [
   { id: 'nac', label: 'NAC' },
 ];
 
-const MAX_SIZE_MB = 8;
+// Limite sur le fichier *d'origine*, avant compression : au-delà, le décodage
+// dans le navigateur devient lourd. Après compression on tombe à quelques
+// centaines de Ko, bien en dessous des limites de Supabase Storage.
+const MAX_SOURCE_MB = 30;
 
 // Nettoie un nom de fichier pour le chemin de stockage (pas d'accents/espaces).
 const slugify = (value: string) =>
@@ -25,19 +29,23 @@ const AdminGallery: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState<GalleryCategory>('chiens');
   const [name, setName] = useState('');
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [failures, setFailures] = useState<string[]>([]);
+  const [success, setSuccess] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const fetchImages = useCallback(async () => {
-    const { data, error } = await supabase
+    const { data, error: fetchError } = await supabase
       .from('gallery_images')
       .select('*')
       .order('created_at', { ascending: false });
 
-    if (!error && data) setImages(data as GalleryImage[]);
+    if (fetchError) setError(`Impossible de charger les photos : ${fetchError.message}`);
+    else if (data) setImages(data as GalleryImage[]);
     setLoading(false);
   }, []);
 
@@ -47,72 +55,129 @@ const AdminGallery: React.FC = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setError(null);
-    const selected = e.target.files?.[0] ?? null;
-    if (selected) {
-      if (!selected.type.startsWith('image/')) {
-        setError('Le fichier doit être une image.');
-        setFile(null);
-        return;
-      }
-      if (selected.size > MAX_SIZE_MB * 1024 * 1024) {
-        setError(`L'image est trop lourde (max ${MAX_SIZE_MB} Mo).`);
-        setFile(null);
-        return;
-      }
+    setFailures([]);
+    setSuccess(null);
+
+    const selected = Array.from(e.target.files ?? []);
+    const tooBig = selected.filter(f => f.size > MAX_SOURCE_MB * 1024 * 1024);
+
+    if (tooBig.length) {
+      setError(
+        `Trop lourd (max ${MAX_SOURCE_MB} Mo) : ${tooBig.map(f => f.name).join(', ')}`
+      );
     }
-    setFile(selected);
+
+    setFiles(selected.filter(f => f.size <= MAX_SOURCE_MB * 1024 * 1024));
   };
 
   const resetForm = () => {
     setName('');
-    setFile(null);
+    setFiles([]);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const handleUpload = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!file) {
-      setError('Veuillez choisir une image.');
-      return;
+  // Envoie une photo : compression, dépôt dans le bucket, puis ligne en base.
+  // Renvoie l'enregistrement créé, ou lève une erreur au message explicite.
+  const uploadOne = async (file: File, displayName: string, index: number): Promise<GalleryImage> => {
+    let prepared: File;
+    try {
+      prepared = await compressImage(file);
+    } catch (e) {
+      if (isUnreadableImageError(e)) {
+        throw new Error(
+          "format non reconnu par le navigateur (les fichiers HEIC de l'iPhone doivent être convertis en JPEG)"
+        );
+      }
+      throw e;
     }
-    setUploading(true);
-    setError(null);
 
-    // Extension nettoyée (lettres/chiffres uniquement) pour éviter toute
-    // manipulation du chemin de stockage via le nom de fichier.
-    const rawExt = file.name.split('.').pop()?.toLowerCase() || '';
-    const ext = /^[a-z0-9]{1,5}$/.test(rawExt) ? rawExt : 'jpg';
-    const safeName = name.trim() || file.name.replace(/\.[^.]+$/, '');
-    const path = `${category}/${Date.now()}-${slugify(safeName)}.${ext}`;
+    // L'index évite une collision si deux fichiers de même nom partent
+    // dans la même milliseconde (upsert est volontairement désactivé).
+    const path = `${category}/${Date.now()}-${index}-${slugify(displayName)}.jpg`;
 
     const { error: uploadError } = await supabase.storage
       .from(GALLERY_BUCKET)
-      .upload(path, file, { cacheControl: '3600', upsert: false });
+      .upload(path, prepared, {
+        cacheControl: '3600',
+        upsert: false,
+        contentType: prepared.type,
+      });
 
-    if (uploadError) {
-      setError("Erreur lors de l'envoi de l'image. Veuillez réessayer.");
-      setUploading(false);
-      return;
-    }
+    if (uploadError) throw new Error(uploadError.message);
 
     const { data: urlData } = supabase.storage.from(GALLERY_BUCKET).getPublicUrl(path);
 
     const { data: inserted, error: insertError } = await supabase
       .from('gallery_images')
-      .insert({ name: safeName, category, path, url: urlData.publicUrl })
+      .insert({ name: displayName, category, path, url: urlData.publicUrl })
       .select()
       .single();
 
     if (insertError || !inserted) {
       // On nettoie le fichier orphelin si l'insertion échoue.
       await supabase.storage.from(GALLERY_BUCKET).remove([path]);
-      setError("Erreur lors de l'enregistrement. Veuillez réessayer.");
+      throw new Error(insertError?.message ?? "enregistrement en base impossible");
+    }
+
+    return inserted as GalleryImage;
+  };
+
+  const handleUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!files.length) {
+      setError('Veuillez choisir au moins une image.');
+      return;
+    }
+
+    setUploading(true);
+    setError(null);
+    setFailures([]);
+    setSuccess(null);
+
+    // L'envoi et l'écriture en base sont réservés au compte admin connecté :
+    // une session expirée se traduirait sinon par un refus incompréhensible.
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) {
+      setError('Votre session a expiré. Déconnectez-vous puis reconnectez-vous avant de réessayer.');
       setUploading(false);
       return;
     }
 
-    setImages(prev => [inserted as GalleryImage, ...prev]);
-    resetForm();
+    setProgress({ done: 0, total: files.length });
+
+    const uploaded: GalleryImage[] = [];
+    const errors: string[] = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      // Le nom saisi ne sert que pour un envoi unitaire ; sinon on reprend
+      // le nom du fichier pour garder les photos distinguables.
+      const displayName =
+        (files.length === 1 && name.trim()) || file.name.replace(/\.[^.]+$/, '');
+
+      try {
+        uploaded.push(await uploadOne(file, displayName, i));
+      } catch (err: any) {
+        errors.push(`${file.name} : ${err?.message ?? 'erreur inconnue'}`);
+      }
+      setProgress({ done: i + 1, total: files.length });
+    }
+
+    if (uploaded.length) setImages(prev => [...uploaded.reverse(), ...prev]);
+    setFailures(errors);
+
+    if (!errors.length) {
+      setSuccess(
+        uploaded.length > 1 ? `${uploaded.length} photos ajoutées.` : 'Photo ajoutée.'
+      );
+      resetForm();
+    } else if (uploaded.length) {
+      setError(`${uploaded.length} photo(s) envoyée(s), ${errors.length} en échec :`);
+    } else {
+      setError("Aucune photo n'a pu être envoyée :");
+    }
+
+    setProgress(null);
     setUploading(false);
   };
 
@@ -129,7 +194,7 @@ const AdminGallery: React.FC = () => {
       .eq('id', image.id);
 
     if (dbError) {
-      setError('Erreur lors de la suppression. Veuillez réessayer.');
+      setError(`Erreur lors de la suppression : ${dbError.message}`);
       setDeletingId(null);
       return;
     }
@@ -142,7 +207,7 @@ const AdminGallery: React.FC = () => {
   return (
     <div className="admin-gallery">
       <form className="gallery-upload-form" onSubmit={handleUpload}>
-        <h2>Ajouter une photo</h2>
+        <h2>Ajouter des photos</h2>
 
         <div className="gallery-form-row">
           <label className="gallery-field">
@@ -162,24 +227,49 @@ const AdminGallery: React.FC = () => {
               onChange={e => setName(e.target.value)}
               placeholder="ex. Luna"
               maxLength={60}
+              disabled={files.length > 1}
             />
           </label>
         </div>
 
         <label className="gallery-field">
-          <span>Image (max {MAX_SIZE_MB} Mo)</span>
+          <span>Images — plusieurs possibles (max {MAX_SOURCE_MB} Mo par photo)</span>
           <input
             ref={fileInputRef}
             type="file"
             accept="image/*"
+            multiple
             onChange={handleFileChange}
           />
         </label>
 
-        {error && <div className="gallery-error">{error}</div>}
+        {files.length > 0 && (
+          <p className="gallery-hint">
+            {files.length} photo{files.length > 1 ? 's' : ''} sélectionnée{files.length > 1 ? 's' : ''}
+            {files.length > 1 && ' — le nom de chaque fichier sera utilisé'}
+            . Les photos sont automatiquement allégées avant l'envoi.
+          </p>
+        )}
 
-        <button type="submit" className="gallery-upload-btn" disabled={uploading || !file}>
-          {uploading ? 'Envoi en cours…' : 'Ajouter la photo'}
+        {error && (
+          <div className="gallery-error">
+            <p>{error}</p>
+            {failures.length > 0 && (
+              <ul className="gallery-error-list">
+                {failures.map(f => <li key={f}>{f}</li>)}
+              </ul>
+            )}
+          </div>
+        )}
+
+        {success && <div className="gallery-success">{success}</div>}
+
+        <button type="submit" className="gallery-upload-btn" disabled={uploading || !files.length}>
+          {uploading
+            ? progress
+              ? `Envoi ${progress.done}/${progress.total}…`
+              : 'Envoi en cours…'
+            : `Ajouter ${files.length > 1 ? `les ${files.length} photos` : 'la photo'}`}
         </button>
       </form>
 

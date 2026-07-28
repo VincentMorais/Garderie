@@ -462,7 +462,7 @@ const BookingCalendar: React.FC = () => {
         Votre créneau est pré-réservé <strong>72h</strong> en attendant la réception du virement.
         <br />
         Une question ? Joignez Émilie au{' '}
-        <a href="tel:0650159411"><strong>06 50 15 94 11</strong></a> ou par email à{' '}
+        <a href="tel:0756804159"><strong>07 56 80 41 59</strong></a> ou par email à{' '}
         <a href="mailto:contact@lemondedeschiensetdesnacs.com">
           contact@lemondedeschiensetdesnacs.com
         </a>.

@@ -22,7 +22,7 @@ const MentionsLegales: React.FC = () => {
           <p><strong>Statut :</strong> Auto-entrepreneur</p>
           <p><strong>Activité :</strong> Garderie et pension pour animaux</p>
           <p><strong>Adresse :</strong> 5 Impasse du Tacot, 91290 Arpajon, France</p>
-          <p><strong>Téléphone :</strong> <a href="tel:0650159411">06 50 15 94 11</a></p>
+          <p><strong>Téléphone :</strong> <a href="tel:0756804159">07 56 80 41 59</a></p>
           <p><strong>Email :</strong> <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a></p>
         </div>
       </section>
@@ -74,7 +74,7 @@ const MentionsLegales: React.FC = () => {
         <p>Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter :</p>
         <div className="legal-contact-box">
           <p>Par email : <a href="mailto:contact@lemondedeschiensetdesnacs.com">contact@lemondedeschiensetdesnacs.com</a></p>
-          <p>Par téléphone : <a href="tel:0650159411">06 50 15 94 11</a></p>
+          <p>Par téléphone : <a href="tel:0756804159">07 56 80 41 59</a></p>
           <p>Par courrier : 5 Impasse du Tacot, 91290 Arpajon</p>
         </div>
       </section>

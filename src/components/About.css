@@ -500,6 +500,46 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
+/* Onglets : certifications d'Émilie / documents à fournir par le client */
+.docs-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem 0;
+  background: #f9f5f6;
+  border-bottom: 1px solid rgba(246, 193, 199, 0.4);
+  flex-shrink: 0;
+}
+
+.docs-tab {
+  flex: 1;
+  padding: 0.7rem 0.75rem;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.docs-tab:hover {
+  color: var(--text-primary);
+}
+
+.docs-tab.active {
+  color: var(--primary-dark);
+  border-bottom-color: var(--primary-color);
+}
+
+.docs-intro {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
 /* Zone scrollable */
 .docs-modal-content {
   overflow-y: auto;
@@ -620,6 +660,13 @@
 .doc-btn--view {
   background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
   color: white;
+}
+
+/* Document annoncé mais dont le PDF n'est pas encore en ligne */
+.doc-btn--pending {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: default;
 }
 
 .doc-btn--view:hover {
@@ -951,5 +998,17 @@
   
   .carousel-section .section-header p {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-tabs {
+    padding: 0.6rem 1rem 0;
+    gap: 0.25rem;
+  }
+
+  .docs-tab {
+    padding: 0.6rem 0.4rem;
+    font-size: 0.82rem;
   }
 }
