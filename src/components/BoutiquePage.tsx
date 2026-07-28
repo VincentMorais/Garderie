@@ -52,18 +52,21 @@ const PRODUCTS: Product[] = [
     category: 'promenade',
   },
   {
+    image: '/longe.jpg',
     name: 'Longe',
     description: "Pour laisser de la liberté à votre chien tout en gardant le contrôle lors des sorties en extérieur.",
     link: 'https://amzn.to/4uqEOo2',
     category: 'promenade',
   },
   {
+    image: '/harnais.jpg',
     name: 'Harnais',
     description: 'Un harnais ajustable qui répartit la traction et préserve le cou de votre chien.',
     link: 'https://amzn.to/4v2fuWA',
     category: 'promenade',
   },
   {
+    image: '/sac-transport.jpg',
     name: 'Sac de transport',
     description: 'Pratique et rassurant pour les trajets, les visites chez le vétérinaire ou les vacances.',
     link: 'https://amzn.to/4vuUXd2',
@@ -91,6 +94,7 @@ const PRODUCTS: Product[] = [
     category: 'promenade',
   },
   {
+    image: '/vetement-pluie.jpg',
     name: 'Vêtement de pluie',
     description: 'Un imperméable léger pour continuer les balades sans rentrer trempé.',
     link: 'https://amzn.to/4fCIjEl',
@@ -98,18 +102,21 @@ const PRODUCTS: Product[] = [
   },
 
   {
+    image: '/gamelle-anti-glouton.jpg',
     name: 'Gamelle anti-glouton',
     description: 'Ralentit la prise du repas et limite les troubles digestifs chez les chiens pressés.',
     link: 'https://amzn.to/3Q0lOyF',
     category: 'repas',
   },
   {
+    image: '/gamelle-inox.jpg',
     name: 'Gamelles (plusieurs tailles)',
     description: "Un lot de gamelles pour s'adapter au gabarit et à la ration de chaque animal.",
     link: 'https://amzn.to/3PL5qlC',
     category: 'repas',
   },
   {
+    image: '/fontaine-eau.jpg',
     name: 'Fontaine à eau',
     description: 'Une eau filtrée en circulation permanente : idéale pour les chats qui boivent peu.',
     link: 'https://amzn.to/3QvWUHj',
@@ -124,6 +131,7 @@ const PRODUCTS: Product[] = [
     category: 'jeux',
   },
   {
+    image: '/jouet-corde.jpg',
     name: "Jouet d'occupation",
     description: "Un second jouet pour varier les plaisirs et éviter l'ennui à la maison.",
     link: 'https://amzn.to/4e0lvvu',
@@ -138,12 +146,14 @@ const PRODUCTS: Product[] = [
     category: 'confort',
   },
   {
+    image: '/tapis-rafraichissant.jpg',
     name: 'Tapis rafraîchissant',
     description: 'Un tapis froid qui aide votre animal à supporter les fortes chaleurs.',
     link: 'https://amzn.to/4xanarb',
     category: 'confort',
   },
   {
+    image: '/coussin.jpg',
     name: 'Coussin',
     description: 'Un couchage moelleux pour des nuits et des siestes réparatrices.',
     link: 'https://amzn.to/4xaZ8MZ',
@@ -151,18 +161,21 @@ const PRODUCTS: Product[] = [
   },
 
   {
-    name: 'Collier anti-parasitaire',
-    description: 'Protection longue durée contre les puces et les tiques.',
+    image: '/collier-antiparasitaire-grand.jpg',
+    name: 'Collier anti-parasitaire — grands chiens',
+    description: 'Seresto pour chiens de plus de 8 kg : 7 à 8 mois de protection contre puces et tiques.',
     link: 'https://amzn.to/3RTL7mx',
     category: 'soin',
   },
   {
-    name: 'Collier anti-parasitaire (2e modèle)',
-    description: 'Une autre référence de collier anti-puces et anti-tiques.',
+    image: '/collier-antiparasitaire-petit.jpg',
+    name: 'Collier anti-parasitaire — petits chiens',
+    description: 'Seresto pour chiens de 8 kg et moins : 7 à 8 mois de protection contre puces et tiques.',
     link: 'https://amzn.to/4e0ohko',
     category: 'soin',
   },
   {
+    image: '/collier-anti-aboiement.jpg',
     name: 'Collier anti-aboiement',
     description: "Une aide pour travailler les aboiements excessifs, à utiliser avec discernement.",
     link: 'https://amzn.to/3SsLTHe',

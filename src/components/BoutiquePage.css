@@ -139,28 +139,42 @@
   transform: translateY(-4px);
 }
 
+/* Vignette toujours carrée, quel que soit le format de la photo.
+   Le contenu est positionné en absolu : une image très verticale (certaines
+   photos produit font 289 x 1500) imposerait sinon sa hauteur intrinsèque à
+   la carte, car « height: 100% » ne se résout pas contre aspect-ratio. */
 .product-image {
+  position: relative;
   aspect-ratio: 1 / 1;
   background: #fff;
+  flex: none;
+  overflow: hidden;
+}
+
+.product-image img,
+.product-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .product-image img {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
   display: block;
 }
 
 /* Produits sans photo : icône de la catégorie sur fond dégradé doux. */
 .product-image-placeholder {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
   background: linear-gradient(135deg, #fdf0f2, #fbe3e7);
+  background-clip: content-box;
+  border-radius: 12px;
   color: #e8a5ad;
   font-size: 3.5rem;
 }
