@@ -383,7 +383,7 @@ const Testimonials: React.FC = () => {
             )}
           </button>
           <a
-            href="https://www.google.com/search?sca_esv=bdca29e42a30a9a8&sxsrf=ANbL-n44W9JSpKE_2Z8y0Oa4M8B7E9Hf3w:1777648434149&q=Le+monde+des+chiens+et+des+nacs+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIysjQ0MLO0MATSRqZGlmaWRhsYGV8xqvikKuTm56WkKqSkFiskZ2Sm5hUrpJaAeXmJycUKjmWZxYtYiVIGAALEa3lnAAAA&rldimm=291069812912529692&tbm=lcl&hl=fr-FR&sa=X&ved=2ahUKEwi1us-7sJiUAxWhdqQEHZZuCWoQ9fQKegQIUxAG&biw=1920&bih=911&dpr=1#lkt=LocalPoiReviews"
+            href="https://www.google.com/maps?cid=291069812912529692"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-google-cta"
