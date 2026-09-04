@@ -1,4 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from './_vercel-types';
 import { Resend } from 'resend';
 import { esc, escMax } from './_html';
 import { clientIp, rateLimit } from './_ratelimit';
